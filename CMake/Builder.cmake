@@ -1,12 +1,6 @@
 
 function(build_static_testlib target modules)
 
-    LIST(LENGTH HEADERS num_headers)
-    if ( num_headers GREATER 0 )
-        # mocify given headers
-        qt_wrap_cpp(${target} HEADERS ${HEADERS})
-    endif()
-
     # append our utils testmanagement
     list(APPEND DEPENDENCIES "UtilsTestManagement")
 
@@ -17,223 +11,212 @@ endfunction()
 
 function(build_static_lib target modules)
 
-        _handle_modules_pre_linker("${modules}")
+    _handle_modules_pre_linker("${modules}")
 
-        add_library(${target} ${SOURCES} ${HEADERS})
+    add_library(${target} ${SOURCES} ${HEADERS})
 
-        LIST(LENGTH DEPENDENCIES num_dependencies)
-        if ( num_dependencies GREATER 0 )
-            target_link_libraries(${target} ${DEPENDENCIES})
-        endif()
-        
-        _handle_modules_post_linker("${modules}" ${target})
-
-endfunction()
-
-function(build_test_app target modules)
-
-    SET(EXECUTABLE_OUTPUT_PATH "${PROJECT_BINARY_DIR}/testbin")
-    LIST(APPEND DEPENDENCIES Utils UtilsTestManagement)
-    LIST(APPEND modules "qttest")
-
-    build_app(${target} "${modules}")
-
-endfunction()
-
-function(build_qtgui_app target modules)
-
-    LIST(LENGTH FORMS num_forms)
-    if ( num_forms GREATER 0 )
-        qt4_wrap_ui(HEADERS ${FORMS})
-        # the generated .h files are in the binary dir
-        include_directories(${CMAKE_CURRENT_BINARY_DIR})
+    LIST(LENGTH DEPENDENCIES num_dependencies)
+    if ( num_dependencies GREATER 0 )
+        target_link_libraries(${target} ${DEPENDENCIES})
     endif()
 
-    LIST(APPEND modules "qtgui")
-
-    build_app(${target} "${modules}")
+    _handle_modules_post_linker("${modules}" ${target})
 
 endfunction()
+
 
 function(build_app target modules)
 
-        _handle_modules_pre_linker("${modules}")
+    _handle_modules_pre_linker("${modules}")
 
-        SET(CMAKE_CXX_FLAGS "-Wl,--as-needed")
-        LIST(LENGTH HEADERS num_headers)
-        if ( num_headers GREATER 0 )
-            qt_wrap_cpp(${target} HEADERS ${HEADERS})
-        endif()
+    SET(CMAKE_CXX_FLAGS "-Wl,--as-needed")
+    LIST(LENGTH HEADERS num_headers)
 
-        add_executable(${target} ${SOURCES} ${HEADERS})
-    
-        # link against specified libs
-        target_link_libraries(${target} ${DEPENDENCIES})
-        
-        _handle_modules_post_linker("${modules}" ${target})
+    add_executable(${target} ${SOURCES} ${HEADERS})
+
+    # link against specified libs
+    target_link_libraries(${target} ${DEPENDENCIES})
+
+    _handle_modules_post_linker("${modules}" ${target})
 
 endfunction()
+
 
 function(_handle_modules_pre_linker modules)
-    
-    # make qt available to all by default
-    #_handle_pre_qtcore()
 
-    list(FIND modules "qtgui" found)
+    list(FIND modules "boost" found)
     if ( ${found} GREATER -1 )
-        _handle_pre_qtgui()
+        _handle_pre_boost()
     endif()
 
-    list(FIND modules "qtsql" found)
+    list(FIND modules "curl" found)
     if ( ${found} GREATER -1 )
-        _handle_pre_qtsql()
+        _handle_pre_curl()
     endif()
 
-    list(FIND modules "qttest" found)
+    list(FIND modules "json" found)
     if ( ${found} GREATER -1 )
-        _handle_pre_qttest()
+        _handle_pre_json()
     endif()
-   
-    # always include boost
-    #list(FIND modules "boost" found)
-    #if ( ${found} GREATER -1 )
-    #    _handle_pre_boost()
-    #endif()
 
-    #list(FIND modules "json" found)
-    #if ( ${found} GREATER -1 )
-    #    _handle_pre_json()
-    #endif()
+    list(FIND modules "mysql" found)
+    if ( ${found} GREATER -1 )
+        _handle_pre_mysql()
+    endif()
 
 endfunction()
+
 
 function(_handle_modules_post_linker modules target)
 
-    # link against qtcore by default 
-    _handle_post_qtcore(${target})
-    
-    list(FIND modules "qtgui" found)
+    list(FIND modules "boost" found)
     if ( ${found} GREATER -1 )
-        _handle_post_qtgui(${target})
+        _handle_post_boost(${target})
     endif()
-    
-    list(FIND modules "qtsql" found)
+
+    list(FIND modules "curl" found)
     if ( ${found} GREATER -1 )
-        _handle_post_qtsql(${target})
-    endif()
-    
-    list(FIND modules "qttest" found)
-    if ( ${found} GREATER -1 )
-        _handle_post_qttest(${target})
+        _handle_post_curl(${target})
     endif()
 
     list(FIND modules "json" found)
     if ( ${found} GREATER -1 )
         _handle_post_json(${target})
     endif()
-   
-endfunction()
 
-function(_handle_pre_qtcore)
-
-        find_package(Qt4)
-        SET(QT_DONT_USE_QTGUI 1)
-        include(${QT_USE_FILE})
-
-endfunction()
-
-function(_handle_post_qtcore target)
-
-    target_link_libraries(${target} ${QT_LIBRARIES} ${QT_QTCORE_LIBRARY})
+    list(FIND modules "mysql" found)
+    if ( ${found} GREATER -1 )
+        _handle_post_mysql(${target})
+    endif()
 
 endfunction()
 
 
-function(_handle_pre_qtgui)
+###############################
+### BOOST
 
-        find_package(Qt4 COMPONENTS QtGui REQUIRED)
-        SET(QT_USE_QTGUI 1)
-        SET(QT_DONT_USE_QTGUI 0)
-        include(${QT_USE_FILE})
+function(_boost_check_existence)
 
-endfunction()
-
-function(_handle_post_qtgui target)
-
-    target_link_libraries(${target} ${QT_QTGUI_LIBRARY})
+    # make sure the appropriate environment variable is set!
+    if("${BUILD_BOOST_INC}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_BOOST_INC needed for boost!")
+    endif()
 
 endfunction()
 
 
-function(_handle_pre_qtsql)
-
-        find_package(Qt4 COMPONENTS QtSql REQUIRED)
-        SET(QT_DONT_USE_QTGUI 1)
-        SET(QT_USE_QTSQL 1)
-        include(${QT_USE_FILE})
-
-endfunction()
-
-function(_handle_post_qtsql target)
-
-    target_link_libraries(${target} ${QT_QTSQL_LIBRARY})
-
-endfunction()
-
-
-function(_handle_pre_qttest)
-
-        find_package(Qt4 COMPONENTS QtSql REQUIRED)
-        SET(QT_DONT_USE_QTGUI 1)
-        SET(QT_USE_QTSQL 1)
-        include(${QT_USE_FILE})
-
-endfunction()
-
-function(_handle_post_qttest target)
-
-    target_link_libraries(${target} ${QT_QTTEST_LIBRARY})
+function(_handle_post_boost)
 
 endfunction()
 
 
 function(_handle_pre_boost)
 
-    # make sure the appropriate environment variable is set!
-    if("${ISC_BUILD_BOOST_INC}" STREQUAL "")
-        MESSAGE(FATAL_ERROR "ISC_BUILD_BOOST_INC needed for boost!")
-    endif()
-
-    include_directories(${ISC_BUILD_BOOST_INC})
+    _boost_check_existance()
+    include_directories(${BUILD_BOOST_INC})
 
 endfunction()
 
+### BOOST
+###############################
+
+###############################
+### CURL
+
+function(_curl_check_existence)
+
+    # make sure the appropriate environment variable is set!
+    if("${BUILD_CURL_INC}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_CURL_INC needed for curl!")
+    endif()
+    if("${BUILD_CURL_LIB}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_CURL_LIB needed for curl!")
+    endif()
+
+endfunction()
+
+function(_handle_post_curl target)
+
+    _curl_check_existence()
+    target_link_libraries(${target} curl)
+
+endfunction()
+
+function(_handle_pre_curl)
+
+    _curl_check_existence()
+    include_directories(${BUILD_CURL_INC})
+
+endfunction()
+
+### CURL
+###############################
+
+###############################
+### JSON
 
 function(_json_check_existence)
 
     # make sure the appropriate environment variable is set!
-    if("${ISC_BUILD_JSON_INC}" STREQUAL "")
-        MESSAGE(FATAL_ERROR "ISC_BUILD_JSON_INC needed for json!")
+    if("${BUILD_JSON_INC}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_JSON_INC needed for json!")
     endif()
 
-    if("${ISC_BUILD_JSON_LIB}" STREQUAL "")
-        MESSAGE(FATAL_ERROR "ISC_BUILD_JSON_LIB needed for json!")
+    if("${BUILD_JSON_LIB}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_JSON_LIB needed for json!")
     endif()
-
-endfunction()
-
-function(_handle_pre_json)
-
-    _json_check_existence()
-    include_directories(${ISC_BUILD_JSON_INC})
-    link_directories(${ISC_BUILD_JSON_LIB})
 
 endfunction()
 
 function(_handle_post_json target)
 
     _json_check_existence()
-    target_link_libraries(${target} jsoncpp)
+    target_link_libraries(${target} Json)
 
 endfunction()
+
+function(_handle_pre_json)
+
+    _json_check_existence()
+    include_directories(${BUILD_JSON_INC})
+    link_directories(${BUILD_JSON_LIB})
+
+endfunction()
+
+### JSON
+###############################
+
+###############################
+### MYSQL
+
+function(_mysql_check_existence)
+
+    # make sure the appropriate environment variable is set!
+    if("${BUILD_MYSQL_INC}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_MYSQL_INC needed for mysql!")
+    endif()
+
+    if("${BUILD_MYSQL_LIB}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_MYSQL_LIB needed for mysql!")
+    endif()
+
+endfunction()
+
+function(_handle_post_mysql target)
+
+    _mysql_check_existence()
+    target_link_libraries(${target} mysqlclient)
+
+endfunction()
+
+function(_handle_pre_mysql)
+
+    _mysql_check_existence()
+    include_directories(${BUILD_MYSQL_INC})
+    link_directories(${BUILD_MYSQL_LIB})
+
+endfunction()
+
+### MYSQL
+###############################
 
