@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="AtlasEngine_debug.lib ObjectiveScript_debug.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib ..\Externals\RakNet\libs\RakNetLibStatic.lib ws2_32.lib"
+				AdditionalDependencies="AtlasEngine_debug.lib ObjectiveScript_debug.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib ..\Externals\RakNet\libs\RakNetLibStatic.lib ..\Externals\SDL\lib\win32\SDL2.lib ..\Externals\SDL\lib\win32\SDL2main.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName)_debug.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\Libs"
@@ -150,7 +150,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="AtlasEngine.lib ObjectiveScript.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib ..\Externals\RakNet\libs\RakNetLibStatic.lib"
+				AdditionalDependencies="AtlasEngine.lib ObjectiveScript.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib ..\Externals\RakNet\libs\RakNetLibStatic.lib ..\Externals\SDL\lib\win32\SDL2.lib ..\Externals\SDL\lib\win32\SDL2main.lib ws2_32.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\Libs"
 				GenerateManifest="false"
@@ -269,18 +269,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Terrain\Manager.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Terrain\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Weapon\Manager.cpp"
 				>
 			</File>
@@ -301,6 +289,18 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Collision\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Terrain\Manager.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Terrain\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -349,26 +349,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Network\Server\Telegrams.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\NetWork\Server\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\NetWork\Server\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Network\Client\Telegrams.cpp"
 				>
 				<FileConfiguration
@@ -385,6 +365,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\NetWork\Client\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Network\Server\Telegrams.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\NetWork\Server\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\NetWork\Server\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -471,15 +471,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Terrain\Manager.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Collision\Manager.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Weapon\Manager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Terrain\Manager.h"
 				>
 			</File>
 			<File
@@ -503,19 +503,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Network\Client\Telegrams.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Network\Server\Telegrams.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Types.h"
+				RelativePath=".\Network\Client\Telegrams.h"
 				>
 			</File>
 			<File
 				RelativePath=".\ClientSidePrediction\Types.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Types.h"
 				>
 			</File>
 			<File
