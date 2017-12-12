@@ -1,5 +1,6 @@
 
 #ADD_SUBDIRECTORY(OpenGL)
+ADD_SUBDIRECTORY(SDL)
 
 SET(SOURCES
     Driver.cpp
@@ -15,7 +16,7 @@ SET(HEADERS
 )
 
 SET(DEPENDENCIES
-    EngineDriverOpenGL
+    EngineDriverSDL
 )
 
 add_include(Projects/Engine)

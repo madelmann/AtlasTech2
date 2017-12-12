@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="AtlasEngine_debug.lib ObjectiveScript_debug.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib"
+				AdditionalDependencies="AtlasEngine_debug.lib ObjectiveScript_debug.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib ..\Externals\SDL\lib\win32\SDL2.lib ..\Externals\SDL\lib\win32\SDL2main.lib"
 				OutputFile="$(OutDir)\$(ProjectName)_debug.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\Libs"
@@ -150,7 +150,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="AtlasEngine.lib ObjectiveScript.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib"
+				AdditionalDependencies="AtlasEngine.lib ObjectiveScript.lib ..\Externals\OpenAL\libs\alut.lib ..\Externals\OpenAL\libs\OpenAL32.lib ..\Externals\OpenGL\libs\glaux.lib ..\Externals\SDL\lib\win32\SDL2.lib ..\Externals\SDL\lib\win32\SDL2main.lib"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\Libs"
 				GenerateManifest="false"
