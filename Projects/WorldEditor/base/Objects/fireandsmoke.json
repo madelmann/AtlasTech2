@@ -1,0 +1,87 @@
+{
+    "animspeed": {
+        "type": "float",
+        "value": 0
+    },
+    "color": {
+        "type": "vector4",
+        "value": {
+            "x": 1,
+            "y": 1,
+            "z": 1,
+            "w": 1
+        }
+    },
+    "colormap": {
+        "type": "string",
+        "value": ""
+    },
+    "facing": {
+        "type": "int",
+        "value": 0
+    },
+    "heightmap": {
+        "type": "string",
+        "value": ""
+    },
+    "material": {
+        "type": "string",
+        "value": ""
+    },
+    "mesh": {
+        "type": "string",
+        "value": "fireandsmoke"
+    },
+    "normalmap": {
+        "type": "string",
+        "value": ""
+    },
+    "pack": {
+        "type": "string",
+        "value": ""
+    },
+    "rotation": {
+        "type": "vector3",
+        "value": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        }
+    },
+    "scale": {
+        "type": "vector3",
+        "value": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+        }
+    },
+    "shader": {
+        "type": "string",
+        "value": ""
+    },
+    "size": {
+        "type": "vector3",
+        "value": {
+            "x": 5,
+            "y": 5,
+            "z": 5
+        }
+    },
+    "translation": {
+        "type": "vector3",
+        "value": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        }
+    },
+    "type": {
+        "type": "string",
+        "value": "particlesystem"
+    },
+    "volumetype": {
+        "type": "int",
+        "value": 1
+    }
+}

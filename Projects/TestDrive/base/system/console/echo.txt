@@ -1,0 +1,3 @@
+Usage: echo <on/off>
+ 
+Redisplays entered command.

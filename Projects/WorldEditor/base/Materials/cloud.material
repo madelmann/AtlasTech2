@@ -1,0 +1,20 @@
+alpha.enabled bool false
+//alpha.function int 3
+alpha.function string GEQUAL
+alpha.reference float 0.1
+blending.enabled bool true
+//blending.destination int 7
+blending.destination string DST_ALPHA
+//blending.source int 5
+blending.source string SRC_ALPHA
+environmental.enabled bool false
+emission vector4 1.0 1.0 1.0 1.0
+light.ambient vector4 0.2 0.2 0.2 1.0
+light.drawbuffermode int 2
+light.diffuse vector4 0.8 0.8 0.8 1.0
+light.enabled bool true
+light.specular vector4 0.0 0.0 0.0 1.0
+name string cloud
+shininess float 127
+sound string 
+texture string 

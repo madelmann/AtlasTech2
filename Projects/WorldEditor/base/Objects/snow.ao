@@ -1,0 +1,15 @@
+animspeed float 0.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string snow.bmp
+facing int 0
+//heightmap string 
+material string default.material
+mesh string snow
+//normalmap string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+//shader string 
+size vector3 1.0 1.0 1.0
+translation vector3 0.0 0.0 0.0
+type string particle
+volumetype int 1

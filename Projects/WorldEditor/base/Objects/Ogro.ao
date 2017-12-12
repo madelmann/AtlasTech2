@@ -1,0 +1,29 @@
+// Orgo
+animspeed 12.0
+color vector4 1.0 1.0 1.0 1.0
+color.x 1.0
+color.y 1.0
+color.z 1.0
+color.w 1.0
+colormap Ogro.pcx
+facing 0
+material default.material
+mesh Ogro
+//normalmap 
+rotation.x 0.0
+rotation.y 0.0
+rotation.z 0.0
+scale vector3 1.0 1.0 1.0
+scale.x 0.5
+scale.y 0.5
+scale.z 0.5
+size vector3 1.0 1.0 1.0
+size.x 1.0
+size.y 1.0
+size.z 1.0
+//shader 
+translation vector3 0.0 0.0 0.0
+translation.x 0.0
+translation.y 4.0
+translation.z 0.0
+type md2

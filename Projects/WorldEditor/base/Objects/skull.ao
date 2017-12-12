@@ -1,0 +1,17 @@
+// Hueteotl
+animspeed float12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string hueteotl.pcx
+facing int 0
+heightmap string 
+material string default.material
+mesh string Hueteotl
+normalmap string 
+pack string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+shader string 
+//size vector3 1.0 1.0 1.0
+translation vector3 0.0 0.0 0.0
+type string md2
+volumetype int 1

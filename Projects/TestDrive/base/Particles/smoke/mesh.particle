@@ -1,0 +1,28 @@
+// Smoke particle system
+alpha 1.0
+airresistance true
+blending true
+color.x 1.0
+color.y 1.0
+color.z 1.0
+fadein 1.0
+fadeout 1.0
+globalgravity false
+gravity.x 0.0
+gravity.y 5.0
+gravity.z 0.0
+lifetime 4.0
+loopexecution true
+// material smoke.material
+maxparticles 1000
+polygonmode false
+numtorelease 2
+releaseinterval 0.1
+size 60.0
+texture smoke3.tga
+velocity.x 0.0
+velocity.y 0.0
+velocity.z 0.0
+velocityvariable.x 1.5
+velocityvariable.y 0.0
+velocityvariable.z 0.0

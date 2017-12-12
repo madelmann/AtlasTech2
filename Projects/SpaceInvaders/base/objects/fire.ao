@@ -1,0 +1,15 @@
+// Fire
+animspeed float 12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string fire.tga
+facing int 0
+material string default.material
+mesh string fire
+normalmap string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+size vector3 1.0 1.0 1.0
+shader string 
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

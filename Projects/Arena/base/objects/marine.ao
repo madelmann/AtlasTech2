@@ -1,0 +1,17 @@
+animspeed float 12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string colormap.jpg
+facing int 0
+heightmap string heightmap.jpg
+material string default.material
+mesh string marine
+normalmap string normalmap.jpg
+//pack string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 0.25 0.25 0.25
+shader string PerPixelBumpmapping
+//size vector3 1.0 1.0 1.0
+//translation vector3 11.0 5.0 5.0
+translation vector3 0.0 2.5 0.0
+type string md2
+volumetype int 1

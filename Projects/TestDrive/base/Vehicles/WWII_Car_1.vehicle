@@ -1,0 +1,11 @@
+// WWII_Car_1
+air_decceleration float 0.3
+axle float 2.0 0.0 4.0
+break_decceleration float 2.0
+curve_angle float 10.0
+mass float 1000.0
+max_acceleration float 1.5
+max_curve_angle float 60.0
+max_speed float 170.0
+mesh string ww2car1.ao
+name string WWII_Car_1

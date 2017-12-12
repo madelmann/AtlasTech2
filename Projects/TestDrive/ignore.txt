@@ -1,0 +1,6 @@
+Debug
+Release
+AtlasEngine.log
+ignore.txt
+TestDrive_debug.exe
+*.user

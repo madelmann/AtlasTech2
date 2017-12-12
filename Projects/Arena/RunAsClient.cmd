@@ -1,0 +1,1 @@
+Arena_debug.exe --client=yes

@@ -1,0 +1,15 @@
+nimspeed int 0
+color vector4 1.0 1.0 1.0 1.0
+colormap string mesh.jpg
+facing int 0
+//heightmap string heightmap.tga
+material string default.material
+mesh string barrack
+normalmap string normalmap_4.bmp
+rotation vector3 0.0 0.0 0.0
+scale vector3 0.25 0.25 0.25
+shader string DisplacementMapping
+size vector3 1.0 1.0 1.0
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

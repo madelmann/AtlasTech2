@@ -1,0 +1,20 @@
+// Snow particle system
+alpha float 1.0
+airresistance bool true
+attenuation vector3 1.0 0.1 0.001
+blending bool true
+color vector4 1.0 1.0 1.0 1.0
+fadein float 0.5
+fadeout float 0.5
+globalgravity bool false
+gravity vector3 0.0 -0.5 0.0
+lifetime float 4.0
+loopexecution bool true
+maxparticles int 444
+numtorelease int 2
+polygonmode bool false
+range vector3 5.0 0.0 5.0
+releaseinterval float 0.05
+size float 100.0
+velocity vector3 0.0 0.0 0.0
+velocityvariable vector3 2.0 0.0 2.0

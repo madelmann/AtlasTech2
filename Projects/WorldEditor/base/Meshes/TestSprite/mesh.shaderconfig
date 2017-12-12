@@ -1,0 +1,3 @@
+bias float -0.025
+enableParallax int 0
+scale float 0.04

@@ -1,0 +1,15 @@
+animspeed float 0.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string smoke.tga
+facing int 0
+//heightmap string 
+material string smoke.material
+mesh string smoke
+//normalmap string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+size vector3 1.0 1.0 1.0
+//shader string 
+translation vector3 0.0 0.0 0.0
+type string particle
+volumetype int 1

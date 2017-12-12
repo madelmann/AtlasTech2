@@ -1,0 +1,17 @@
+// Rocket
+animspeed float 12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string colormap.jpg
+facing int 2
+heightmap string 
+material string default.material
+mesh string laser
+normalmap string 
+pack string 
+rotation vector3 90.0 0.0 0.0
+scale vector3 1.0 0.5 1.0
+shader string 
+//size vector3 1.0 1.0 1.0
+translation vector3 0.0 0.0 0.0
+type vector3 sprite
+volumetype int 1

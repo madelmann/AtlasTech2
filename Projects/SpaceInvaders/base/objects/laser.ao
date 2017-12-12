@@ -1,0 +1,15 @@
+animspeed float 12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string 
+facing int 0
+heightmap string 
+material string default.material
+mesh string laser
+normalmap string 
+pack string packs/bullets/laser
+rotation vector3 0.0 0.0 0.0
+scale vector3 0.05 0.05 0.05
+shader string 
+translation vector3 0.0 0.0 0.0
+type vector3 3ds
+volumetype int 1

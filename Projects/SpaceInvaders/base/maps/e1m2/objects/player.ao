@@ -1,0 +1,16 @@
+// 3d player mesh
+animspeed float 12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string colormap.jpg
+facing int 0
+heightmap string 
+material string default.material
+mesh string ship
+normalmap string 
+pack string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 3.0 3.0 3.0
+shader string 
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

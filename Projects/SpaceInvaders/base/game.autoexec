@@ -1,0 +1,6 @@
+// game.autoexec
+
+// key bindings
+input bindkey 37 left
+input bindkey 39 right
+input bindkey 32 shoot

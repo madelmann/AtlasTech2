@@ -1,0 +1,16 @@
+// objtest
+animspeed float 0.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string colormap.tga
+facing int 0
+heightmap string heightmap.tga
+material string default.material
+mesh string objtest
+normalmap string normalmap.tga
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+//shader string DisplacementMapping
+//size vector3 1.0 1.0 1.0
+translation vector3 0.0 5.0 0.0
+type string obj
+volumetype int 1

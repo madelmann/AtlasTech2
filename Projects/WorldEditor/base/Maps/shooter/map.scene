@@ -1,0 +1,9 @@
+sceneobject Eye so_eye {
+	position vector3 (0.0, 100.0, 100.0)
+	rotation vector3 (0.0, 0.0, 0.0)
+}
+
+sceneobject Kapelle so_kapelle {
+	position vector3 (100.0, 100.0, 100.0)
+	rotation vector3 (0.0, 0.0, 0.0)
+}

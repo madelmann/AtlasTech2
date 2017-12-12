@@ -1,0 +1,16 @@
+// Arc
+animspeed int 0
+color vector4 1.0 1.0 1.0 1.0
+colormap string walls\brick_colormap.jpeg
+facing int 2
+heightmap string walls\brick_heightmap.jpeg
+material string chrome.material
+mesh string enemy
+normalmap string walls\brick_normalmap.jpeg
+rotation vector3 0.0 0.0 0.0
+scale vector3 0.5 0.5 0.5
+shader string DisplacementMapping
+size vector3 1.0 1.0 1.0
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

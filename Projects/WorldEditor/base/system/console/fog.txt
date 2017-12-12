@@ -1,0 +1,8 @@
+Changes settings of fog:
+affectsskybox <bool>
+color <vector4f>
+density <float>
+enabled <bool>
+end <float>
+mode <uint>
+start <float>

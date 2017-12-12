@@ -1,0 +1,7 @@
+{
+	"console_enabled": { "type": "bool", "value": "true" },
+	"console_font_name": { "type": "string", "value": "Courier_New" },
+	"console_font_size": { "type": "int", "value": 20 },
+	"game_font_name": { "type": "string", "value": "Courier_New" },
+	"game_font_size": { "type": "int", "value": 20 }
+}

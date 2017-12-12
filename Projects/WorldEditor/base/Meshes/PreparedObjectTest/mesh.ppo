@@ -1,0 +1,21 @@
+// Description: prepared object test mesh
+// name = name of particle system (AtlasEngine::Object name)
+description string "prepared object test"
+leaves.size int 4
+leaves:0.enabled bool true
+leaves:0.mesh string CastleTower.ao
+leaves:0.position vector3 -50.0 0.0 -50.0
+leaves:0.scale vector3 0.5 0.5 0.5
+leaves:1.enabled bool true
+leaves:1.mesh string CastleTower.ao
+leaves:1.position vector3 50.0 0.0 -50.0
+leaves:1.scale vector3 0.5 0.5 0.5
+leaves:2.enabled bool true
+leaves:2.mesh string CastleTower.ao
+leaves:2.position vector3 50.0 0.0 50.0
+leaves:2.scale vector3 0.5 0.5 0.5
+leaves:3.enabled bool true
+leaves:3.mesh string CastleTower.ao
+leaves:3.position vector3 -50.0 0.0 50.0
+leaves:3.scale vector3 0.5 0.5 0.5
+name string PreparedObjectTest

@@ -1,0 +1,12 @@
+color vector4 1.0 1.0 1.0 1.0
+colormap string WWII_Car_1.tga
+facing int 0
+material string chrome.material
+mesh string car3
+normalmap string normalmap_2.bmp
+scale vector3 0.75 0.75 0.75
+size vector3 1.0 1.0 1.0
+shader string DisplacementMapping
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

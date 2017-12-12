@@ -1,0 +1,81 @@
+------
+|Bugs|
+------
+- fix the damn mouse position reading bug:
+	Q: does this has something to do with unpopped matrix pushes?
+	A: no, aePushMatrix/aePopMatrix count the pushed matrixes and assert if not all got popped.
+	S: our display-quad was the source of the problems, now the mouse position is read every
+	   frame before rendering the quad. Now we have to fix the problem, that the camera is the
+	   source position of all measurements.
+	!Warning: this will most likely decrease rendering speed!
+- Meshes:
+	- meshes without shaders have incorrect material properties set (i.e. no light, no blending, etc.)
+- Textures:
+	+ jpg textures are loaded incorrectly (mirrored and upside down)
+	- fix png texture loading
+
+----------
+|Features|
+----------
+[Components]
+- Engine:
+	- Effects:
+		- Depth Of Field
+		- Order Independent Transparency
+	- post effects:
+		- old movie noise effect (with use of animated textures)
+	- Frame Settings (inherit from engine view settings): set before frame will be rendered, so that view depth can be set differently for all render paths
+- Environment:
+	- Rain/Snow
+	- Settings
+	- Sun & Time of day (day/night cycle)
+	- Wind
+- Light:
+	- migrate from Light to Manager
+	- create a global light controlling class (which controls all light sources in one place)
+- Meshes:
+	- Animation interface
+- ObjectManager/Mesh*Manager:
+	- [HOLD] support more mesh formats:
+		- md3 (Quake 3) format (as mesh manager plugin)
+		- md5 (Doom 3) format (as mesh manager plugin)
+		- obj format (as mesh manager plugin)
+- Parsers:
+	Q: think about how we could parse arrays (i.e. scene.conf: entity)
+	A: like we have done it with our new particlesystem configuration: <property>:<index> <type> <value>
+- Particles:
+	- use VBO for rendering
+	- more work on particle sizes (maybe graphics driver related)
+- Physics:
+	- write a plugin capable physics system containing these simple components:
+		- an (aab)box intersection test (which creates it's own bounding volumes)
+		- a movement update mechanisme (for use with the box intersection test)
+- SceneManager:
+	- Motion Blur (RenderObject wise)
+	SceneGraphObject:
+		- show SceneGraphObject-Id over object (2d text positioned in the 3d world would be nice)
+- Scripting Engine:
+	- think about what we want to do with it and how we can achieve it
+- SettingsService:
+	- Restricted Settings: some values are not allowed to be changed during runtime
+- Sound:
+	- implement me
+- Storages:
+	- various forms of storages (i.e. XMLStorage, JSONStorage, SQLiteStorage, ODBCStorage)
+- Terrain:
+	- fix multitexturing (with light/shadow)
+	- subdivided VBO terrain
+- TextureManager:
+	- [HOLD] animated textures (without the need of interaction from the calling renderer)
+	- TexturePacks: package of color-, height- & normalmap
+- Water:
+	- reflections (via mirror and shaders)
+	- reflection depth: a view depth for reflections
+	- Texture animation (= texture coord shifting)
+- UIKit:
+	- UI objects (Labels, Buttons, Frames, etc.)
+[Various]
+- why do shaders (i.e. BumpMap) prevent fog, light and materials from working correctly?
+	Q: Do we have to write a shader compiler that combines various effects?
+	A: Yep, we need a shader compiler.
+	S: Tools::ShaderCompiler (not yet done)

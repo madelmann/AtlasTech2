@@ -1,0 +1,20 @@
+alpha.enabled bool false
+//alpha.function int 3
+alpha.function string LEQUAL
+alpha.reference float 0.5
+blending.enabled bool true
+//blending.destination int 7
+blending.destination string DST_ALPHA
+//blending.source int 5
+blending.source string SRC_ALPHA
+environmental.enabled bool false
+emission vector4 1.0 1.0 1.0 1.0
+light.ambient vector4 0.054 0.05 0.066 0.75
+light.drawbuffermode int 2
+light.diffuse vector4 0.183 0.17 0.225 0.75
+light.enabled bool true
+light.specular vector4 0.333 0.329 0.346 0.75
+name string obsidian
+shininess float 14.0
+sound string 
+texture string 

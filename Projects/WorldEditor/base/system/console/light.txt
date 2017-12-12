@@ -1,0 +1,4 @@
+Changes settings of light:
+color <vector4f>
+enabled <bool>
+mode <uint>

@@ -1,0 +1,30 @@
+// Knight
+animspeed 12.0
+color vector4 1.0 1.0 1.0 1.0
+color.x 1.0
+color.y 1.0
+color.z 1.0
+color.w 1.0
+colormap Knight.pcx
+facing 2
+heightmap height_map.jpeg
+material chrome.material
+mesh Knight
+normalmap normal_map.jpeg
+rotation.x 0.0
+rotation.y 0.0
+rotation.z 0.0
+scale vector3 1.0 1.0 1.0
+scale.x 1.0
+scale.y 1.0
+scale.z 1.0
+size vector3 1.0 1.0 1.0
+size.x 1.0
+size.y 1.0
+size.z 1.0
+shader DisplacementMapping
+translation vector3 0.0 0.0 0.0
+translation.x 0.0
+translation.y 8.0
+translation.z 0.0
+type md2

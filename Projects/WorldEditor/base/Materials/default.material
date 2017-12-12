@@ -1,0 +1,21 @@
+alpha.enabled bool false
+//alpha.function int 3
+alpha.function string LEQUAL
+alpha.reference float 0.5
+blending.enabled bool false
+//blending.destination int 5
+blending.destination string DST_ALPHA
+//blending.source int 5
+blending.source string SRC_ALPHA
+environmental.enabled bool false
+emission vector4 1.0 1.0 1.0 1.0
+light.ambient vector4 0.25 0.25 0.25 1.0
+light.drawbuffermode int 2
+light.diffuse vector4 0.8 0.8 0.8 1.0
+light.enabled bool true
+light.specular vector4 0.0 0.0 0.0 1.0
+name string default
+shininess float 0.0
+shader string PerPixelLighting
+sound string 
+texture string 

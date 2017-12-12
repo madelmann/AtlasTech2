@@ -1,0 +1,48 @@
+<configuration name="scene">
+	<object name="camera">
+		<property name="position" type="vector3">
+			<item name="x" type="float" value="0" />
+			<item name="y" type="float" value="0" />
+			<item name="z" type="float" value="0" />
+		</property>
+		<property name="view" type="vector3">
+			<item name="x" type="float" value="0" />
+			<item name="y" type="float" value="0" />
+			<item name="z" type="float" value="0" />
+		</property>
+	</object>
+	<item name="daytime" type="int" value="1200" />
+	<array name="entity">
+		<object name="0">
+			<item name="mesh" type="string" value="CastleTower.ao" />
+			<property name="position" type="vector3">
+				<item name="x" type="float" value="0" />
+				<item name="y" type="float" value="0" />
+				<item name="z" type="float" value="0" />
+			</property>
+			<property name="rotation" type="vector3">
+				<item name="x" type="float" value="0" />
+				<item name="y" type="float" value="0" />
+				<item name="z" type="float" value="0" />
+			</property>
+		</object>
+		<object name="1">
+			<item name="mesh" type="string" value="CastleTower.ao" />
+			<property name="position" type="vector3">
+				<item name="x" type="float" value="0" />
+				<item name="y" type="float" value="0" />
+				<item name="z" type="float" value="0" />
+			</property>
+			<property name="rotation" type="vector3">
+				<item name="x" type="float" value="0" />
+				<item name="y" type="float" value="0" />
+				<item name="z" type="float" value="0" />
+			</property>
+		</object>
+	</array>
+	<property name="wind" type="vector3">
+		<item name="x" type="float" value="0" />
+		<item name="y" type="float" value="0" />
+		<item name="z" type="float" value="0" />
+	</property>
+</configuration>

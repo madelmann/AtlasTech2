@@ -1,0 +1,1 @@
+   cloud, cls, console, echo, fog, help, light, man, quit, spawn, water

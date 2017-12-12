@@ -1,0 +1,7 @@
+Debug
+Release
+AtlasEngine.log
+ignore.txt
+ShaderCompiler_debug.exe
+ShaderCompiler.exe
+*.user

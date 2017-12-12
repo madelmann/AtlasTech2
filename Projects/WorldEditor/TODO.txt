@@ -1,0 +1,2 @@
+- draw a grid to show the x and z 0 axis (implement as a RenderPlugin)
+- do not initially load a map, instead provide a menu to select or create one

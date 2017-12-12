@@ -1,0 +1,5 @@
+Debug
+Release
+AtlasEngine.log
+ignore.txt
+*.user

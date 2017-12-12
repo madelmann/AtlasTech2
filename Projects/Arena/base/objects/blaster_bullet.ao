@@ -1,0 +1,16 @@
+animspeed float 0.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string 
+facing int 1
+heightmap string 
+material string default.material
+mesh string stone
+normalmap string 
+//pack string 
+rotation vector3 0.0 90.0 0.0
+scale vector3 0.4 0.4 0.4
+shader string 
+//size vector3 1.0 1.0 1.0
+translation vector3 0.0 -10.0 -7.0
+type string 3ds
+volumetype int 1

@@ -1,0 +1,12 @@
+cat
+cls
+console
+echo
+fog
+help
+light
+ls
+man
+quit
+spawn
+water

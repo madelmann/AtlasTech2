@@ -1,0 +1,21 @@
+
+private string Name;
+
+public void startup()
+{
+	Name = "startup";
+}
+
+public void ~startup()
+{
+}
+
+public string getName(string param1)
+{
+	return Name;
+}
+
+public void printName(string param1)
+{
+	print(Name);
+}

@@ -1,0 +1,15 @@
+animspeed float 0.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string stonefloor_colormap.jpg
+facing int 1
+heightmap string stonefloor_heightmap.jpg
+material string default.material
+mesh string kapelle
+normalmap string stonefloor_normalmap.jpg
+//pack string walls/brick
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+shader string PerPixelBumpmapping
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

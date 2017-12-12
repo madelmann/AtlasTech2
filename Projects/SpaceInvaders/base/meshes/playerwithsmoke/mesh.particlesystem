@@ -1,0 +1,15 @@
+// Description: fire particle system with smoke
+// emitter<unsigned int>.enabled = allow rendering of emitter
+// emitter<unsigned int>.mesh = particle name
+// emitter<unsigned int>.position = particle position relative to root position
+// emitter<unsigned int>.type string point = type of emitter (should be part of particle declaration instead of particle system)
+// name = name of particle system (AtlasEngine::Object name)
+description string "fire particle system with smoke"
+emitter.size int 2
+emitter:0.enabled bool true
+emitter:0.mesh string player_3d.ao
+emitter:0.position vector3 0.0 0.0 0.0
+emitter:1.enabled bool true
+emitter:1.mesh string smoke.ao
+emitter:1.position vector3 0.0 0.0 -8.0
+name string FireAndSmoke

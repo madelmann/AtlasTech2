@@ -1,0 +1,9 @@
+alut.lib
+EFX-Util.lib
+Engine.lib
+Engine_debug.lib
+ignore.txt
+jpeg.lib
+newton.lib
+newton_d.lib
+OpenAL32.lib

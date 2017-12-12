@@ -1,0 +1,5 @@
+Changes settings of console:
+fontname <string>
+fontsize <uint>
+lines <uint>
+linespace <float>

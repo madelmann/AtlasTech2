@@ -1,0 +1,16 @@
+// BoxMesh
+animspeed float 0.0
+color vector3 1.0 1.0 1.0 1.0
+colormap string table.tga
+facing int 0
+heightmap string 
+material string default.material
+mesh string BoxMesh
+normalmap string normalmap_4.bmp
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+size vector3 8.0 1.0 2.0
+shader string DisplacementMapping
+translation vector3 0.0 0.0 0.0
+type string BoxMesh
+volumetype int 1

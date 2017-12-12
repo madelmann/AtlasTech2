@@ -1,0 +1,17 @@
+animspeed float 0.0
+color vector3 1.0 1.0 1.0
+colormap string 
+facing int 0
+heightmap string 
+material string obsidian.material
+mesh string eye
+normalmap string 
+pack string stonefloor
+rotation vector3 0.0 0.0 0.0
+scale vector3 1.0 1.0 1.0
+shader string PerPixelLighting
+//size vector3 1.0 1.0 1.0
+//translation vector3 0.0 3.85 0.0
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

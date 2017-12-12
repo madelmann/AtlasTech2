@@ -1,0 +1,1 @@
+Display detailed information about a command.

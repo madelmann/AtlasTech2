@@ -1,0 +1,20 @@
+// Fire particle system
+alpha float 1.0
+airresistance bool true
+attenuation vector3 1.0 0.1 0.0001
+blending bool true
+color vector3 1.0 0.5 0.5
+fadein float 1.0
+fadeout float 1.0
+globalgravity bool false
+gravity vector3 0.0 6.0 0.0
+lifetime float 2.5
+loopexecution bool true
+maxparticles int 1000
+numtorelease int 2
+polygonmode bool false
+range vector3 2.0 0.0 2.0
+releaseinterval float 0.1
+size float 100.0
+velocity vector3 0.0 0.0 0.0
+velocityvariable vector3 2.0 0.0 2.0

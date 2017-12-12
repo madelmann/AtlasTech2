@@ -1,0 +1,16 @@
+animspeed float 0.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string colormap.jpg
+facing int 1
+heightmap string heightmap.jpg
+material string default.material
+mesh string machinegun
+normalmap string normalmap.jpg
+//pack string 
+rotation vector3 0.0 90.0 0.0
+scale vector3 0.4 0.4 0.4
+shader string PerPixelBumpmapping
+//size vector3 1.0 1.0 1.0
+translation vector3 0.0 -10.0 -7.0
+type string 3ds
+volumetype int 1

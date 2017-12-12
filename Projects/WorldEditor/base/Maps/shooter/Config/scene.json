@@ -1,0 +1,78 @@
+{
+    "camera": {
+        "position": {
+            "type": "vector3",
+            "value": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        "view": {
+            "type": "vector3",
+            "value": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        }
+    },
+    "daytime": {
+        "type": "int",
+        "value": 1200
+    },
+    "entity": [
+        {
+            "mesh": {
+                "type": "string",
+                "value": "CastleTower.ao"
+            },
+            "position": {
+                "type": "vector3",
+                "value": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "rotation": {
+                "type": "vector3",
+                "value": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "mesh": {
+                "type": "string",
+                "value": "CastleTower.ao"
+            },
+            "position": {
+                "type": "vector3",
+                "value": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "rotation": {
+                "type": "vector3",
+                "value": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            }
+        }
+    ],
+    "wind": {
+        "type": "vector3",
+        "value": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        }
+    }
+}

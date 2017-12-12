@@ -1,0 +1,15 @@
+// fighter
+animspeed float 12.0
+color vector4 1.0 1.0 1.0 1.0
+colormap string fighter.tga
+facing int 0
+heightmap string 
+material string default.material
+mesh string fighter
+normalmap string 
+rotation vector3 0.0 0.0 0.0
+scale vector3 0.5 0.5 0.5
+shader string 
+translation vector3 0.0 0.0 0.0
+type string 3ds
+volumetype int 1

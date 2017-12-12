@@ -1,0 +1,3 @@
+Usage: spawn <AtlasEngine Object>.ao [x z y]
+
+Spawns an AtlasEngine object at 0.0/0.0/0.0 or at the given coordinates
