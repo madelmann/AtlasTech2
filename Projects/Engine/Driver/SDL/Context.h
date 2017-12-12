@@ -1,19 +1,11 @@
 
-#ifndef _Driver_OpenGL_Context_h_
-#define _Driver_OpenGL_Context_h_
+#ifndef _Driver_SDL_Context_h_
+#define _Driver_SDL_Context_h_
 
-
-// MS pragmas
-//#pragma comment(lib, "glew32.lib")
-#pragma comment(lib, "opengl32.lib")
 
 // Library includes
 #include <windows.h>
-#include <OpenGL/include/gl.h>										// Header File For The OpenGL32 Library
-//#include <OpenGL/include/glext.h>
-//#include <OpenGL/include/glu.h>										// Header File For The GLu32 Library
-//#include <OpenGL/include/glut.h>									// Header file for the opengl utility library
-//#include <OpenGL/include/glaux.h>									// Header File For The GLaux Library
+#include <SDL/include/SDL.h>
 
 // Project includes
 #include <Common/Logger.h>
@@ -23,7 +15,7 @@
 // Namespace declarations
 
 
-namespace OpenGL {
+namespace SDL {
 
 
 class Context : private Common::Logger
@@ -47,8 +39,8 @@ public:
 	bool setup(HWND hwnd, const Settings& s);
 
 protected:
-	virtual bool createOpenGLContext();
-	virtual void destroyOpenGLContext();
+	virtual bool createSDLContext();
+	virtual void destroySDLContext();
 
 private:
 	void shutdown();

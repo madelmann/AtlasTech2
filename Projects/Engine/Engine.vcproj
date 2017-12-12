@@ -707,6 +707,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Driver\SDL\Context.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Mesh\Volume\Cylinder.cpp"
 				>
 				<FileConfiguration
@@ -1251,26 +1255,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Input\Keyboard\Keyboard.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Keyboard\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Keyboard\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Driver\Keyboard.cpp"
 				>
 				<FileConfiguration
@@ -1287,6 +1271,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Driver\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Input\Keyboard\Keyboard.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Keyboard\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Keyboard\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1331,26 +1335,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Terrain\VBO\Layer.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Terrain\VBO\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Terrain\VBO\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Terrain\Subdivided\Layer.cpp"
 				>
 				<FileConfiguration
@@ -1367,6 +1351,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Terrain\Subdivided\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Terrain\VBO\Layer.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Terrain\VBO\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Terrain\VBO\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1431,46 +1435,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Texture\Loader\PCX\Loader.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Texture\Loader\PCX\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Texture\Loader\PCX\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\Texture\Loader\BMP\Loader.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Texture\Loader\BMP\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Texture\Loader\BMP\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Texture\Loader\PNG\Loader.cpp"
 				>
 				<FileConfiguration
@@ -1507,6 +1471,46 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Texture\Loader\JPG\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Texture\Loader\BMP\Loader.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Texture\Loader\BMP\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Texture\Loader\BMP\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Texture\Loader\PCX\Loader.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Texture\Loader\PCX\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Texture\Loader\PCX\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1571,14 +1575,14 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Terrain\Manager.cpp"
+				RelativePath=".\Material\Manager.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Terrain\"
+						ObjectFile="$(IntDir)\Material\"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1586,7 +1590,7 @@
 					>
 					<Tool
 						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Terrain\"
+						ObjectFile="$(IntDir)\Material\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1611,14 +1615,14 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Material\Manager.cpp"
+				RelativePath=".\Terrain\Manager.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Material\"
+						ObjectFile="$(IntDir)\Terrain\"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1626,27 +1630,7 @@
 					>
 					<Tool
 						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Material\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\ScriptNG\Manager.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\ScriptNG\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\ScriptNG\"
+						ObjectFile="$(IntDir)\Terrain\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1867,6 +1851,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Sound\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\ScriptNG\Manager.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ScriptNG\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ScriptNG\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -2231,26 +2235,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Json\Parser.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\JSON\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\JSON\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\JSONNG\Parser.cpp"
 				>
 				<FileConfiguration
@@ -2267,6 +2251,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\JsonNG\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Json\Parser.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\JSON\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\JSON\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3115,26 +3119,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Math\Tools.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Math\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Math\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\Tools\Tools.cpp"
 				>
 				<FileConfiguration
@@ -3151,6 +3135,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\Tools\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Math\Tools.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Math\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Math\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3315,26 +3319,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Parsers\Value.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Parsers\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Parsers\"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\JsonNG\Value.cpp"
 				>
 				<FileConfiguration
@@ -3351,6 +3335,26 @@
 					<Tool
 						Name="VCCLCompilerTool"
 						ObjectFile="$(IntDir)\JsonNG\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Parsers\Value.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Parsers\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Parsers\"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3805,6 +3809,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Driver\SDL\Context.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Mesh\Volume\Cylinder.h"
 				>
 			</File>
@@ -3865,11 +3873,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\JsonNG\Exceptions.h"
+				RelativePath=".\JSON\Exceptions.h"
 				>
 			</File>
 			<File
-				RelativePath=".\JSON\Exceptions.h"
+				RelativePath=".\JsonNG\Exceptions.h"
 				>
 			</File>
 			<File
@@ -3921,11 +3929,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Interfaces\Scene\IAttribute.h"
+				RelativePath=".\Interfaces\Appearence\IAttribute.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Interfaces\Appearence\IAttribute.h"
+				RelativePath=".\Interfaces\Scene\IAttribute.h"
 				>
 			</File>
 			<File
@@ -4005,7 +4013,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Interfaces\Sky\IManager.h"
+				RelativePath=".\Interfaces\Material\IManager.h"
 				>
 			</File>
 			<File
@@ -4013,11 +4021,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Interfaces\Material\IManager.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Interfaces\UIKit\IManager.h"
+				RelativePath=".\Interfaces\Sky\IManager.h"
 				>
 			</File>
 			<File
@@ -4058,6 +4062,10 @@
 			</File>
 			<File
 				RelativePath=".\Interfaces\Water\IManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Interfaces\UIKit\IManager.h"
 				>
 			</File>
 			<File
@@ -4161,11 +4169,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Driver\Keyboard.h"
+				RelativePath=".\Input\Keyboard\Keyboard.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Input\Keyboard\Keyboard.h"
+				RelativePath=".\Driver\Keyboard.h"
 				>
 			</File>
 			<File
@@ -4177,11 +4185,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Terrain\Subdivided\Layer.h"
+				RelativePath=".\Terrain\VBO\Layer.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Terrain\VBO\Layer.h"
+				RelativePath=".\Terrain\Subdivided\Layer.h"
 				>
 			</File>
 			<File
@@ -4197,14 +4205,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Texture\Loader\TGA\Loader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Texture\Loader\PCX\Loader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Texture\Loader\PNG\Loader.h"
 				>
 			</File>
@@ -4217,6 +4217,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Texture\Loader\PCX\Loader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Texture\Loader\TGA\Loader.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Texture\Loader\png\lodepng.h"
 				>
 			</File>
@@ -4226,10 +4234,6 @@
 			</File>
 			<File
 				RelativePath=".\Console\Plugins\Man.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ScriptNG\Manager.h"
 				>
 			</File>
 			<File
@@ -4286,6 +4290,10 @@
 			</File>
 			<File
 				RelativePath=".\Texture\Manager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ScriptNG\Manager.h"
 				>
 			</File>
 			<File
@@ -4461,7 +4469,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ScriptNG\Settings.h"
+				RelativePath=".\Fog\Settings.h"
 				>
 			</File>
 			<File
@@ -4469,11 +4477,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Fog\Settings.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Terrain\Settings.h"
+				RelativePath=".\ScriptNG\Settings.h"
 				>
 			</File>
 			<File
@@ -4493,7 +4497,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Sky\Settings.h"
+				RelativePath=".\Terrain\Settings.h"
 				>
 			</File>
 			<File
@@ -4522,6 +4526,10 @@
 			</File>
 			<File
 				RelativePath=".\Font\Settings.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Sky\Settings.h"
 				>
 			</File>
 			<File
@@ -4649,19 +4657,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Math\Tools.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Tools\Tools.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Interfaces\Common\Transaction.h"
+				RelativePath=".\Math\Tools.h"
 				>
 			</File>
 			<File
 				RelativePath=".\JsonNG\Transaction.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Interfaces\Common\Transaction.h"
 				>
 			</File>
 			<File
@@ -4685,15 +4693,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Terrain\Types.h"
-				>
-			</File>
-			<File
 				RelativePath=".\UIKit\Types.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Mesh\Format\3ds\Types.h"
+				RelativePath=".\Terrain\Types.h"
 				>
 			</File>
 			<File
@@ -4741,6 +4745,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Mesh\Format\3ds\Types.h"
+				>
+			</File>
+			<File
 				RelativePath=".\UIKit\UIBaseObject.h"
 				>
 			</File>
@@ -4761,11 +4769,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Parsers\Value.h"
+				RelativePath=".\JsonNG\Value.h"
 				>
 			</File>
 			<File
-				RelativePath=".\JsonNG\Value.h"
+				RelativePath=".\Parsers\Value.h"
 				>
 			</File>
 			<File
