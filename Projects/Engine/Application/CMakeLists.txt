@@ -1,11 +1,11 @@
 INCLUDE(${PROJECT_SOURCE_DIR}/CMake/Base.cmake)
 
 SET(SOURCES
-        Application.cpp
+    Application.cpp
 )
 
 SET(HEADERS
-        Application.h
+    Application.h
 )
 
 SET(DEPENDENCIES

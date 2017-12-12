@@ -2,7 +2,7 @@ INCLUDE(${PROJECT_SOURCE_DIR}/CMake/Base.cmake)
 
 #ADD_SUBDIRECTORY(Appearence)
 #ADD_SUBDIRECTORY(Application)
-#ADD_SUBDIRECTORY(Camera)
+ADD_SUBDIRECTORY(Camera)
 #ADD_SUBDIRECTORY(Clouds)
 #ADD_SUBDIRECTORY(Common)
 #ADD_SUBDIRECTORY(Console)
@@ -20,7 +20,7 @@ ADD_SUBDIRECTORY(Core)
 #ADD_SUBDIRECTORY(Light)
 #ADD_SUBDIRECTORY(LOD)
 #ADD_SUBDIRECTORY(Material)
-#ADD_SUBDIRECTORY(Math)
+ADD_SUBDIRECTORY(Math)
 #ADD_SUBDIRECTORY(Media)
 #ADD_SUBDIRECTORY(Menu)
 #ADD_SUBDIRECTORY(Mesh)
@@ -39,21 +39,25 @@ ADD_SUBDIRECTORY(Core)
 #ADD_SUBDIRECTORY(Tools)
 #ADD_SUBDIRECTORY(UI)
 #ADD_SUBDIRECTORY(UIKit)
-#ADD_SUBDIRECTORY(Water)
-#ADD_SUBDIRECTORY(Wind)
+ADD_SUBDIRECTORY(Water)
+ADD_SUBDIRECTORY(Wind)
 
 SET(SOURCES
-	Engine.cpp
+	globals.cpp
 )
 
 SET(HEADERS
-	Engine.h
+	globals.h
 )
 
 SET(DEPENDENCIES
+	EngineWind
+	EngineWater
+	EngineCore
 )
 
 add_include(Projects/Engine)
+add_include(Projects/Externals)
 add_include(Projects/ObjectiveScript)
 
 build_static_lib(Engine "")

@@ -27,6 +27,7 @@ public:
 	Wind(const Common::Logger *p);
 	virtual ~Wind();
 
+public:
 	// Connectors
 	//{
 	void connectConsole(IConsoleInterface *c);
@@ -45,12 +46,9 @@ public:
 	void update(float elapsedTime = 0.f);
 	// }
 
-protected:
-
 private:
-	Settings	mSettings;
-
-	IConsoleInterface	*mConsole;
+	IConsoleInterface *mConsole;
+	Settings mSettings;
 };
 
 

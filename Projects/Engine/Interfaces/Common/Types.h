@@ -13,14 +13,6 @@
 
 
 #ifdef _WIN32
-//typedef _W64 int INT_PTR, *PINT_PTR;
-//typedef _W64 unsigned int UINT_PTR, *PUINT_PTR;
-//typedef _W64 long LONG_PTR, *PLONG_PTR;
-
-//typedef UINT_PTR            WPARAM;
-//typedef LONG_PTR            LPARAM;
-//typedef LONG_PTR            LRESULT;
-#endif
 
 typedef	signed		__int8		sint8;
 typedef	unsigned	__int8		uint8;
@@ -33,7 +25,7 @@ typedef	unsigned	__int64		uint64;
 
 typedef			int			sint;			// at least 32bits (depend on processor)
 typedef	unsigned	int			uint;			// at least 32bits (depend on processor)
-
+#endif
 
 
 typedef unsigned int	AEbitfield;

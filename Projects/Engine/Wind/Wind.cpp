@@ -5,8 +5,8 @@
 // Library includes
 
 // Project includes
-#include "ConsolePlugin.h"
 #include <Interfaces/Console/IConsoleInterface.h>
+#include "ConsolePlugin.h"
 
 // Namespace declarations
 

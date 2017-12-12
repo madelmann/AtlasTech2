@@ -3,7 +3,7 @@
 #define _Common_Logger_h_
 
 
-#pragma warning(disable : 4996)
+//#pragma warning(disable : 4996)
 
 
 #define debug(msg) LogDebug(msg, __FILE__, __LINE__);

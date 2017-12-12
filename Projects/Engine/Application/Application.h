@@ -5,7 +5,10 @@
 
 // Library includes
 #include <list>
-#include <windows.h>
+
+#ifdef _WIN32
+#	include <windows.h>
+#endif
 
 // Project includes
 #include <Common/Logger.h>
@@ -34,7 +37,9 @@ using Console::IConsole;
 using Core::IScreenWriter;
 
 
+#ifdef _WIN32
 extern LRESULT CALLBACK WinProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+#endif
 
 
 namespace Core {
@@ -53,7 +58,9 @@ public:
 	virtual void initialize(const std::string& cmdline) = 0;
 
 public:
+#ifdef _WIN32
 	LRESULT CALLBACK handle(const Common::Event &e, HWND hwnd);
+#endif
 
 	void exec();
 	void initialize();

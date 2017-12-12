@@ -20,7 +20,7 @@ namespace Core {
 class Id
 {
 public:
-	const AEid id() const {
+	AEid id() const {
 		return mId;
 	}
 	void setId(AEid id) {

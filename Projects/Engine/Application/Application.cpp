@@ -13,7 +13,9 @@
 // Namespace declarations
 
 
+#ifdef _WIN32
 extern LRESULT CALLBACK WinProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+#endif
 
 
 namespace Core {

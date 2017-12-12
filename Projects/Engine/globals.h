@@ -4,10 +4,6 @@
 
 
 // Library includes
-//#define USE_VLD
-#ifdef USE_VLD
-#include <vld.h>
-#endif
 
 // Project includes
 

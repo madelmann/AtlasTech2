@@ -12,7 +12,6 @@
 
 
 const float fPi = 3.14159265f;
-//const double dPi = 3.1415926535897932384626433832795;
 const double dPI = 2 * std::acos(0.0);
 
 
@@ -62,7 +61,7 @@ float fastsqrtf(const float x)
 
 float fastSquareRoot(float x)
 {
-	__asm{
+	__asm {
 		fld x;
 		fsqrt;
 		fstp x;

@@ -26,6 +26,7 @@ SET(DEPENDENCIES
 )
 
 add_include(Projects/Engine)
+add_include(Projects/Externals)
 
 build_static_lib(EngineCore "")
 
