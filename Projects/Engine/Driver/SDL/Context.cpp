@@ -16,7 +16,7 @@ Context::Context(const Common::Logger *p)
 : Common::Logger(p, "SDL::Context"),
   mDeviceContext(0),
   mRenderingContext(0),
-  mWindowHandle(0)
+  mWindow(0)
 {
 }
 
@@ -42,11 +42,23 @@ bool Context::createSDLContext()
 		return false;
 	}
 
+	// Window mode MUST include SDL_WINDOW_OPENGL for use with OpenGL.
+	mWindow = SDL_CreateWindow("SDL2/OpenGL Demo", 0, 0, 640, 480, SDL_WINDOW_OPENGL|SDL_WINDOW_RESIZABLE);
+
+	// Create an OpenGL context associated with the window.
+	mDeviceContext = SDL_GL_CreateContext(mWindow);
+
 	return true;
 }
 
 void Context::destroySDLContext()
 {
+	// Once finished with OpenGL functions, the SDL_GLContext can be deleted.
+	SDL_GL_DeleteContext(mDeviceContext);  
+
+	// Destroy window after we are done
+	SDL_DestroyWindow(mWindow);
+
 	SDL_Quit();
 }
 
@@ -55,11 +67,8 @@ const Context::Settings& Context::provideSettings() const
 	return mSettings;
 }
 
-bool Context::setup(HWND hwnd, const Settings& s)
+bool Context::setup(const Settings& s)
 {
-	// set window handle
-	mWindowHandle = hwnd;
-
 	// set our opengl context settings
 	mSettings = s;
 

@@ -44,15 +44,13 @@ public:
 protected:
 
 private:
-	//int checkDriverExtension(char* extensionName);
-
 	void destroyFrameBufferEXT();
 	void initFrameBufferEXT();
 	void initVertexBufferObjects();
 
 	DriverExtensions mDriverExtensions;
 
-	char*	mError;
+	char* mError;
 
 	IOcclusionQuery*			mCurrentOcclusionQuery;
 	std::list<IOcclusionQuery*>	mOcclusionQueries;

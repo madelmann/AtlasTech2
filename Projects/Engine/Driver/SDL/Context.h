@@ -4,7 +4,6 @@
 
 
 // Library includes
-#include <windows.h>
 #include <SDL/include/SDL.h>
 
 // Project includes
@@ -36,7 +35,7 @@ public:
 public:
 	bool change(const Settings& s);
 	const Settings& provideSettings() const;
-	bool setup(HWND hwnd, const Settings& s);
+	bool setup(const Settings& s);
 
 protected:
 	virtual bool createSDLContext();
@@ -47,10 +46,10 @@ private:
 	void startup();
 
 private:
-	HDC			mDeviceContext;
-	HGLRC		mRenderingContext;
-	Settings	mSettings;
-	HWND		mWindowHandle;
+	SDL_GLContext mDeviceContext;
+	SDL_GLContext mRenderingContext;
+	Settings mSettings;
+	SDL_Window* mWindow;
 };
 
 

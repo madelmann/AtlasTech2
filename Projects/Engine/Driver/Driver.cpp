@@ -67,41 +67,6 @@ void Driver::bindFrameBufferEXT(AEuint targetId)
 	glFramebufferRenderbufferEXT( GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, mDepthRenderBuffer );
 }
 
-//int Driver::checkDriverExtension(char* extensionName)
-//{
-//	// get the list of supported extensions
-//	char* extensionList = (char*)glGetString(GL_EXTENSIONS);
-//
-//	if ( !extensionName || !extensionList ) {
-//		//warn("invalid parameter or OpenGL extension list invalid");
-//		debug("checkDriverExtension(" + std::string(extensionName) + "): FAILED");
-//		return 0;
-//	}
-//
-//	int count = 0;
-//
-//	while ( extensionList ) {
-//		// find the length of the first extension substring
-//		unsigned int firstExtensionLength = strcspn(extensionList, " ");
-//
-//		if ( strlen(extensionName) == firstExtensionLength &&
-//			strncmp(extensionName, extensionList, firstExtensionLength) == 0 ) {
-//			debug("checkDriverExtension(" + std::string(extensionName) + "): SUCCESSFUL");
-//			return 1;
-//		}	
-//
-//		// move to the next substring
-//		extensionList += firstExtensionLength + 1;
-//		count++;
-//
-//		if ( count > 1024 ) {
-//			break;
-//		}
-//	}
-//
-//    return 0;
-//}
-
 IOcclusionQuery* Driver::createOcclusionQuery()
 {
 	GLuint id;
