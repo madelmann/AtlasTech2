@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C862475E-11C8-4D98-9709-FF7E61A03C62}</ProjectGuid>
+    <RootNamespace>Arena</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.29403.142</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;..\Engine;..\Externals;..\ObjectiveScript;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_WINSOCKAPI_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>AtlasEngine_debug.lib;ObjectiveScript_debug.lib;..\Externals\OpenAL\libs\alut.lib;..\Externals\OpenAL\libs\OpenAL32.lib;..\Externals\OpenGL\libs\glaux.lib;..\Externals\RakNet\libs\RakNetLibStatic.lib;..\Externals\SDL\lib\win32\SDL2.lib;..\Externals\SDL\lib\win32\SDL2main.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_debug.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol />
+      <NoEntryPoint>false</NoEntryPoint>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\;..\Engine;..\Externals;..\ObjectiveScript;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat />
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>AtlasEngine.lib;ObjectiveScript.lib;..\Externals\OpenAL\libs\alut.lib;..\Externals\OpenAL\libs\OpenAL32.lib;..\Externals\OpenGL\libs\glaux.lib;..\Externals\RakNet\libs\RakNetLibStatic.lib;..\Externals\SDL\lib\win32\SDL2.lib;..\Externals\SDL\lib\win32\SDL2main.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Arena.cpp" />
+    <ClCompile Include="Bullet\Bullet.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Bullet\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Bullet\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Bullet\BulletManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Bullet\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Bullet\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Camera\BasicCamera.cpp" />
+    <ClCompile Include="Camera\EditorCamera.cpp" />
+    <ClCompile Include="ClientSidePrediction\ClientSidePrediction.cpp" />
+    <ClCompile Include="Collision\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Collision\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Collision\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Editor\Editor.cpp" />
+    <ClCompile Include="Entity\Entity.cpp" />
+    <ClCompile Include="Entity\EntityManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu\MainMenu.cpp" />
+    <ClCompile Include="Network\Client\TCPClient.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)NetWork\Client\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)NetWork\Client\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Network\Client\Telegrams.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)NetWork\Client\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)NetWork\Client\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Network\Server\TCPServer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)NetWork\Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)NetWork\Server\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Network\Server\Telegrams.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)NetWork\Server\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)NetWork\Server\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="Terrain\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Weapon\Manager.cpp" />
+    <ClCompile Include="Weapon\Weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arena.h" />
+    <ClInclude Include="Bullet\Bullet.h" />
+    <ClInclude Include="Bullet\BulletManager.h" />
+    <ClInclude Include="Camera\BasicCamera.h" />
+    <ClInclude Include="Camera\EditorCamera.h" />
+    <ClInclude Include="ClientSidePrediction\ClientSidePrediction.h" />
+    <ClInclude Include="ClientSidePrediction\IPredictionCorrector.h" />
+    <ClInclude Include="ClientSidePrediction\Types.h" />
+    <ClInclude Include="Collision\Manager.h" />
+    <ClInclude Include="Console\Plugins\ClientPlugin.h" />
+    <ClInclude Include="Console\Plugins\ServerPlugin.h" />
+    <ClInclude Include="Editor\Editor.h" />
+    <ClInclude Include="Entity\Entity.h" />
+    <ClInclude Include="Entity\EntityManager.h" />
+    <ClInclude Include="Entity\IEntityManager.h" />
+    <ClInclude Include="Menu\MainMenu.h" />
+    <ClInclude Include="Network\ATelegram.h" />
+    <ClInclude Include="Network\Client\IClient.h" />
+    <ClInclude Include="Network\Client\TCPClient.h" />
+    <ClInclude Include="Network\Client\Telegrams.h" />
+    <ClInclude Include="Network\ILocalPlayerManager.h" />
+    <ClInclude Include="Network\ISender.h" />
+    <ClInclude Include="Network\Server\IServer.h" />
+    <ClInclude Include="Network\Server\TCPServer.h" />
+    <ClInclude Include="Network\Server\Telegrams.h" />
+    <ClInclude Include="Network\Settings.h" />
+    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Terrain\Manager.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="Weapon\Manager.h" />
+    <ClInclude Include="Weapon\Weapon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Engine\Engine.vcxproj">
+      <Project>{7a053f34-e18a-4345-9206-85327967583f}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\TestSuite\TestSuite.vcxproj">
+      <Project>{381a8136-0195-4a4f-bbcd-4ad754123425}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

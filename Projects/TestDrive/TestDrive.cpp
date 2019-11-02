@@ -210,7 +210,7 @@ void TestDrive::run()
 		{
 			mExternalCamera->view(mPlayer->getPosition());
 
-			vector3f vec = vector3f(2048.f, 1024.f, 2048.f);
+			vec = vector3f(2048.f, 1024.f, 2048.f);
 			vec -= mPlayer->getPosition();
 			vec = normalize(vec);
 			vec = vec * 256.f + mPlayer->getPosition();

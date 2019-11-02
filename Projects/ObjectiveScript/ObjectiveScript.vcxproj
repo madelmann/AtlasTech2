@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C6DB82E5-93BC-4A67-8D37-2FA7BEBDDF29}</ProjectGuid>
+    <RootNamespace>ObjectiveScript</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.29403.142</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\Projects\Libs\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\Projects\Libs\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;..\Externals;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ShowIncludes>false</ShowIncludes>
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_debug.lib</OutputFile>
+      <AdditionalLibraryDirectories>..\Externals;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\;..\Externals;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat />
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>..\Externals;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ObjectiveScript\Analyser.cpp" />
+    <ClCompile Include="ObjectiveScript\Method.cpp" />
+    <ClCompile Include="ObjectiveScript\Object.cpp" />
+    <ClCompile Include="ObjectiveScript\Preprocessor.cpp" />
+    <ClCompile Include="ObjectiveScript\Repository.cpp" />
+    <ClCompile Include="ObjectiveScript\Script.cpp" />
+    <ClCompile Include="ObjectiveScript\Token.cpp" />
+    <ClCompile Include="ObjectiveScript\Tokenizer.cpp" />
+    <ClCompile Include="ObjectiveScript\Tools.cpp" />
+    <ClCompile Include="ObjectiveScript\Types.cpp" />
+    <ClCompile Include="ObjectiveScript\Variable.cpp" />
+    <ClCompile Include="ObjectiveScript\VirtualMachine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ObjectiveScript\Analyser.h" />
+    <ClInclude Include="ObjectiveScript\BuildInObjects\Bool.h" />
+    <ClInclude Include="ObjectiveScript\BuildInObjects\Number.h" />
+    <ClInclude Include="ObjectiveScript\BuildInObjects\String.h" />
+    <ClInclude Include="ObjectiveScript\Exceptions.h" />
+    <ClInclude Include="ObjectiveScript\Interfaces\IPrinter.h" />
+    <ClInclude Include="ObjectiveScript\Keywords\AKeyword.h" />
+    <ClInclude Include="ObjectiveScript\Keywords\for.h" />
+    <ClInclude Include="ObjectiveScript\Keywords\if.h" />
+    <ClInclude Include="ObjectiveScript\Keywords\print.h" />
+    <ClInclude Include="ObjectiveScript\Keywords\return.h" />
+    <ClInclude Include="ObjectiveScript\Method.h" />
+    <ClInclude Include="ObjectiveScript\Object.h" />
+    <ClInclude Include="ObjectiveScript\ObjectiveScript.h" />
+    <ClInclude Include="ObjectiveScript\Preprocessor.h" />
+    <ClInclude Include="ObjectiveScript\Repository.h" />
+    <ClInclude Include="ObjectiveScript\Script.h" />
+    <ClInclude Include="ObjectiveScript\Token.h" />
+    <ClInclude Include="ObjectiveScript\Tokenizer.h" />
+    <ClInclude Include="ObjectiveScript\Tools.h" />
+    <ClInclude Include="ObjectiveScript\Types.h" />
+    <ClInclude Include="ObjectiveScript\Variable.h" />
+    <ClInclude Include="ObjectiveScript\VirtualMachine.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

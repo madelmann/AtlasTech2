@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>AtlasEngine</ProjectName>
+    <ProjectGuid>{7A053F34-E18A-4345-9206-85327967583F}</ProjectGuid>
+    <RootNamespace>Engine</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.29403.142</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\Projects\Libs\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\Projects\Libs\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;..\Externals;..\ObjectiveScript;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ShowIncludes>false</ShowIncludes>
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_debug.lib</OutputFile>
+      <AdditionalLibraryDirectories>..\Externals;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\;..\Externals;..\ObjectiveScript;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat />
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>..\Externals;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Appearence\AlphaAttributes.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Appearence\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Appearence\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Appearence\BlendAttributes.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Appearence\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Appearence\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Appearence\Environmental.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Appearence\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Appearence\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Appearence\LightAttributes.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Appearence\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Appearence\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Application\Application.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Application\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Application\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Camera\MovieCamera\MovieCamera.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Camera\MovieCamera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Camera\MovieCamera\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Camera\MovieCamera\TimeLine.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Camera\MovieCamera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Camera\MovieCamera\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Camera\Viewer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Camera\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Camera\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Clouds\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Clouds\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Clouds\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Common\Context.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Common\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Common\EventQueue.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Common\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Common\Logger.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Common\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Common\StdOutLogger.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Common\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Console\Console.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Console\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Console\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Console\Plugins\VI.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Console\Plugins\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Console\Plugins\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\Common\Viewport.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\Common\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\Common\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\Configuration\Configurator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\Configuration\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\Configuration\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\Engine.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\EngineSettings.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\EngineStates.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\GeneralManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Core\IdGenerator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Database\SQLEntry.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Database\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Database\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Database\SQLRecord.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Database\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Database\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Database\SQLResult.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Database\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Database\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\Driver.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\DriverInformation.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\DriverUtils.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\GLWrapper.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\Keyboard.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\OcclusionQuery.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\OpenGL\Context.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Driver\OpenGL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Driver\OpenGL\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Driver\SDL\Context.cpp" />
+    <ClCompile Include="Environment\Sun\Sun.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Environment\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Environment\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Environment\Time\Time.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Environment\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Environment\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Fog\Fog.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Fog\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Fog\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Fog\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Fog\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Fog\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Font\Font.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Font\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Font\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Frustum\Frustum.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Frustum\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Frustum\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="globals.cpp" />
+    <ClCompile Include="Input\Keyboard\Keyboard.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Keyboard\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Keyboard\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Input\KeyGrabber.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Input\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Input\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Input\Mouse\Mouse.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Input\Mouse\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Input\Mouse\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JsonNG\Connection.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JSONNG\Parser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JsonNG\Storage.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JsonNG\Transaction.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JsonNG\Value.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JSONNG\Writer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JsonNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JSON\JsonConnection.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Json\JsonPhrase.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JSON\JsonStorage.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Json\JsonString.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="JSON\JsonTransaction.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Json\JsonValue.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Json\Parser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)JSON\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)JSON\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Light\Light.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Light\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Light\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Light\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Light\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Material\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Material\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Material\Material.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Material\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Material\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Math\Normals.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Math\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Math\Tools.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Math\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Math\Trigonometrics.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Math\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Math\Vector3.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Math\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Media\PathManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Media\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Media\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Menu\MenuItem.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Menu\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Menu\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\AMesh.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\AMeshManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\3ds\3dsloader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\3ds\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\3ds\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\3ds\Mesh3DS.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\3ds\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\3ds\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\3ds\Mesh3DSManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\3ds\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\3ds\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md2\Md2.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md2\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md2\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md2\MeshMD2.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md2\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md2\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md2\MeshMD2Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md2\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md2\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md5mesh\MD5Model.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md5mesh\MeshMD5.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md5mesh\MeshMD5Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\md5mesh\Quat.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\md5\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\obj\MeshOBJ.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\obj\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\obj\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\obj\MeshOBJManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\obj\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\obj\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\obj\objloader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\obj\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\obj\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\ParticleSystem\ParticleSystem.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\ParticleSystem\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\ParticleSystem\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\ParticleSystem\ParticleSystemManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\ParticleSystem\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\ParticleSystem\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\Particle\Particle.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\Particle\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\Particle\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\Particle\ParticleManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\Particle\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\Particle\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\PreparedObject\PreparedObject.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\PreparedObject\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\PreparedObject\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\PreparedObject\PreparedObjectManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\PreparedObject\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\PreparedObject\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\Sprite\Sprite.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\Sprite\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\Sprite\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\Sprite\SpriteManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\Sprite\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\Sprite\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\VolumeMesh\AVolumeMesh.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\VolumeMesh\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\VolumeMesh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Format\VolumeMesh\VolumeMeshManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Format\VolumeMesh\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Format\VolumeMesh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Utils.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Volume\AABBox.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Volume\AABBoxNoTranslate.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Volume\Box.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Volume\Cylinder.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Mesh\Volume\Sphere.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Mesh\Volume\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Misc\Colors.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Misc\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Misc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Misc\FPSCounter.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Misc\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Misc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Misc\Timer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Misc\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Misc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\ConfigParser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\Evaluator.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\LineParser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\Tokenizer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\Value.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\Valueizer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Parsers\XMLParser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Parsers\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Parsers\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Physic\ACollider.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Physic\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Physic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Physic\CollisionGroup.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Physic\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Physic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Physic\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Physic\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Physic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Physic\World.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Physic\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Physic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Renderer\FrameSettings.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Renderer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Renderer\RenderObject.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Renderer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Renderer\ScreenWriter.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Renderer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Renderer\StillImageRenderer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Renderer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\Attributes\ColorAttribute.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\Attributes\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\Attributes\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\Attributes\RotationAttribute.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\Attributes\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\Attributes\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\Attributes\TranslationAttribute.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\Attributes\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\Attributes\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\Plugins\ViewFrustumRenderer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\Plugins\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\Plugins\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneGraphObject.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneObjectParser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneParser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scene\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Scene\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="ScriptNG\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)ScriptNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)ScriptNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Shader\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Shader\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Shader\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Shader\Shader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Shader\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Shader\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sky\ASky.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sky\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sky\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sky\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sky\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sky\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sky\SkyBox.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sky\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sky\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sound\AudioResource.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sound\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sound\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sound\BaseSound.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sound\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sound\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sound\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sound\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sound\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sound\Sound.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sound\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sound\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sound\Sound2D.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sound\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sound\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Sound\Sound3D.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Sound\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Sound\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Terrain\ALayer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Terrain\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Terrain\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Terrain\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Terrain\Plugins\RenderPlugin.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\Plugins\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(RelativeDir)\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Terrain\Subdivided\Cell.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\Subdivided\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Terrain\Subdivided\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Terrain\Subdivided\Layer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\Subdivided\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Terrain\Subdivided\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Terrain\VBO\Layer.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Terrain\VBO\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Terrain\VBO\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\BaseTexture.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\BMP\Loader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\BMP\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\BMP\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\JPG\Loader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\JPG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\JPG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\PCX\Loader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\PCX\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\PCX\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\PCX\pcx.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\PCX\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\PCX\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\PNG\Loader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\PNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\PNG\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\png\lodepng.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\PNG\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\png\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\TGA\Loader.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\TGA\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\TGA\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Loader\TGA\TGA.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\Loader\TGA\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\Loader\TGA\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Pack.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Texture.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Texture1D.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Texture2D.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Texture\Texture3D.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Texture\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Texture\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Tools\Files.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Tools\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Tools\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Tools\SharedPtr.cpp" />
+    <ClCompile Include="Tools\Strings.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Tools\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Tools\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Tools\Tools.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Tools\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Tools\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\Button.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\Label.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\UIBaseObject.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\UIFrame.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\UIScreen.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UIKit\UITriggerFrame.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UIKit\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UIKit\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UI\Event.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UI\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UI\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="UI\Frame.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)UI\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)UI\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Water\Manager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Water\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Water\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Water\Water.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Water\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Water\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="Wind\Wind.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Wind\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Wind\</ObjectFileName>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Appearence\AlphaAttributes.h" />
+    <ClInclude Include="Appearence\BlendAttributes.h" />
+    <ClInclude Include="Appearence\Environmental.h" />
+    <ClInclude Include="Appearence\LightAttributes.h" />
+    <ClInclude Include="Application\Application.h" />
+    <ClInclude Include="Camera\MovieCamera\Action.h" />
+    <ClInclude Include="Camera\MovieCamera\MovieCamera.h" />
+    <ClInclude Include="Camera\MovieCamera\Settings.h" />
+    <ClInclude Include="Camera\MovieCamera\TimeLine.h" />
+    <ClInclude Include="Camera\Viewer.h" />
+    <ClInclude Include="Clouds\ConsolePlugin.h" />
+    <ClInclude Include="Clouds\Manager.h" />
+    <ClInclude Include="Clouds\Settings.h" />
+    <ClInclude Include="Common\Context.h" />
+    <ClInclude Include="Common\EventQueue.h" />
+    <ClInclude Include="Common\Exceptions.h" />
+    <ClInclude Include="Common\Logger.h" />
+    <ClInclude Include="Common\Singleton.h" />
+    <ClInclude Include="Common\StdOutLogger.h" />
+    <ClInclude Include="Console\Console.h" />
+    <ClInclude Include="Console\ConsolePlugin.h" />
+    <ClInclude Include="Console\Plugins\CLS.h" />
+    <ClInclude Include="Console\Plugins\Echo.h" />
+    <ClInclude Include="Console\Plugins\Help.h" />
+    <ClInclude Include="Console\Plugins\Man.h" />
+    <ClInclude Include="Console\Plugins\Quit.h" />
+    <ClInclude Include="Console\Plugins\SpawnObject.h" />
+    <ClInclude Include="Console\Plugins\TEMPLATE.h" />
+    <ClInclude Include="Console\Plugins\VI.h" />
+    <ClInclude Include="Console\Settings.h" />
+    <ClInclude Include="Core\Common\Viewport.h" />
+    <ClInclude Include="Core\Configuration\Configurator.h" />
+    <ClInclude Include="Core\Engine.h" />
+    <ClInclude Include="Core\EngineSettings.h" />
+    <ClInclude Include="Core\EngineStates.h" />
+    <ClInclude Include="Core\GeneralManager.h" />
+    <ClInclude Include="Core\IdGenerator.h" />
+    <ClInclude Include="Core\Plugins\ConsolePlugin.h" />
+    <ClInclude Include="Core\Settings.h" />
+    <ClInclude Include="Database\SQLEntry.h" />
+    <ClInclude Include="Database\SQLRecord.h" />
+    <ClInclude Include="Database\SQLResult.h" />
+    <ClInclude Include="Driver\Driver.h" />
+    <ClInclude Include="Driver\DriverExtensions.h" />
+    <ClInclude Include="Driver\DriverInformation.h" />
+    <ClInclude Include="Driver\DriverUtils.h" />
+    <ClInclude Include="Driver\GLWrapper.h" />
+    <ClInclude Include="Driver\Keyboard.h" />
+    <ClInclude Include="Driver\OcclusionQuery.h" />
+    <ClInclude Include="Driver\OpenGL\Context.h" />
+    <ClInclude Include="Driver\SDL\Context.h" />
+    <ClInclude Include="Entity\BoundingVolume.h" />
+    <ClInclude Include="Environment\Sun\Sun.h" />
+    <ClInclude Include="Environment\Time\Settings.h" />
+    <ClInclude Include="Environment\Time\Time.h" />
+    <ClInclude Include="Fog\ConsolePlugin.h" />
+    <ClInclude Include="Fog\Fog.h" />
+    <ClInclude Include="Fog\Manager.h" />
+    <ClInclude Include="Fog\Settings.h" />
+    <ClInclude Include="Fog\Types.h" />
+    <ClInclude Include="Font\Font.h" />
+    <ClInclude Include="Font\Settings.h" />
+    <ClInclude Include="Frustum\Frustum.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="Input\ConsolePlugin.h" />
+    <ClInclude Include="Input\Keyboard\Keyboard.h" />
+    <ClInclude Include="Input\KeyGrabber.h" />
+    <ClInclude Include="Input\Mouse\Mouse.h" />
+    <ClInclude Include="Interfaces\Appearence\IAttribute.h" />
+    <ClInclude Include="Interfaces\Camera\IViewer.h" />
+    <ClInclude Include="Interfaces\Clouds\IManager.h" />
+    <ClInclude Include="Interfaces\Common\AComponent.h" />
+    <ClInclude Include="Interfaces\Common\ADependency.h" />
+    <ClInclude Include="Interfaces\Common\AManager.h" />
+    <ClInclude Include="Interfaces\Common\AProcess.h" />
+    <ClInclude Include="Interfaces\Common\AProcessHandler.h" />
+    <ClInclude Include="Interfaces\Common\Containers.h" />
+    <ClInclude Include="Interfaces\Common\Event.h" />
+    <ClInclude Include="Interfaces\Common\IDatabaseConnection.h" />
+    <ClInclude Include="Interfaces\Common\IEventDispatcher.h" />
+    <ClInclude Include="Interfaces\Common\IEventHandler.h" />
+    <ClInclude Include="Interfaces\Common\ILogger.h" />
+    <ClInclude Include="Interfaces\Common\ISettingsService.h" />
+    <ClInclude Include="Interfaces\Common\IStorage.h" />
+    <ClInclude Include="Interfaces\Common\Transaction.h" />
+    <ClInclude Include="Interfaces\Common\Types.h" />
+    <ClInclude Include="Interfaces\Common\Version.h" />
+    <ClInclude Include="Interfaces\Console\ICommandExecutor.h" />
+    <ClInclude Include="Interfaces\Console\IConsole.h" />
+    <ClInclude Include="Interfaces\Console\IConsoleInterface.h" />
+    <ClInclude Include="Interfaces\Console\IConsolePlugin.h" />
+    <ClInclude Include="Interfaces\Console\IConsolePrinter.h" />
+    <ClInclude Include="Interfaces\Console\IConsoleProgram.h" />
+    <ClInclude Include="Interfaces\Core\IController.h" />
+    <ClInclude Include="Interfaces\Core\ICoreManagement.h" />
+    <ClInclude Include="Interfaces\Core\ICoreUtilities.h" />
+    <ClInclude Include="Interfaces\Core\Id.h" />
+    <ClInclude Include="Interfaces\Core\IGeneralManager.h" />
+    <ClInclude Include="Interfaces\Core\Name.h" />
+    <ClInclude Include="Interfaces\Core\Object.h" />
+    <ClInclude Include="Interfaces\Core\Types.h" />
+    <ClInclude Include="Interfaces\Driver\IDriver.h" />
+    <ClInclude Include="Interfaces\Driver\IOcclusionQuery.h" />
+    <ClInclude Include="Interfaces\Fog\IManager.h" />
+    <ClInclude Include="Interfaces\Input\IKeyboard.h" />
+    <ClInclude Include="Interfaces\Input\IMouse.h" />
+    <ClInclude Include="Interfaces\Light\IManager.h" />
+    <ClInclude Include="Interfaces\Material\IManager.h" />
+    <ClInclude Include="Interfaces\Media\IMediaPathManager.h" />
+    <ClInclude Include="Interfaces\Mesh\IMeshManager.h" />
+    <ClInclude Include="Interfaces\Mesh\IObjectManager.h" />
+    <ClInclude Include="Interfaces\Mesh\IVolume.h" />
+    <ClInclude Include="Interfaces\Physics\ICollider.h" />
+    <ClInclude Include="Interfaces\Physics\IManager.h" />
+    <ClInclude Include="Interfaces\Physics\Types.h" />
+    <ClInclude Include="Interfaces\Renderer\IRendererPlugin.h" />
+    <ClInclude Include="Interfaces\Renderer\IScreenWriter.h" />
+    <ClInclude Include="Interfaces\Scene\IAttribute.h" />
+    <ClInclude Include="Interfaces\Scene\IManager.h" />
+    <ClInclude Include="Interfaces\Scene\ISceneManager.h" />
+    <ClInclude Include="Interfaces\Script\IManager.h" />
+    <ClInclude Include="Interfaces\Shader\IManager.h" />
+    <ClInclude Include="Interfaces\Sky\IManager.h" />
+    <ClInclude Include="Interfaces\Sound\IManager.h" />
+    <ClInclude Include="Interfaces\Terrain\IManager.h" />
+    <ClInclude Include="Interfaces\Texture\IManager.h" />
+    <ClInclude Include="Interfaces\Texture\ITextureLoader.h" />
+    <ClInclude Include="Interfaces\UIKit\IManager.h" />
+    <ClInclude Include="Interfaces\Water\IManager.h" />
+    <ClInclude Include="JsonNG\Connection.h" />
+    <ClInclude Include="JsonNG\Exceptions.h" />
+    <ClInclude Include="JsonNG\Json.h" />
+    <ClInclude Include="JSONNG\Parser.h" />
+    <ClInclude Include="JsonNG\Storage.h" />
+    <ClInclude Include="JsonNG\Transaction.h" />
+    <ClInclude Include="JsonNG\Types.h" />
+    <ClInclude Include="JsonNG\Value.h" />
+    <ClInclude Include="JsonNG\Writer.h" />
+    <ClInclude Include="JSON\Exceptions.h" />
+    <ClInclude Include="JSON\JsonConnection.h" />
+    <ClInclude Include="Json\JsonPhrase.h" />
+    <ClInclude Include="JSON\JsonStorage.h" />
+    <ClInclude Include="Json\JsonString.h" />
+    <ClInclude Include="JSON\JsonTransaction.h" />
+    <ClInclude Include="Json\JsonValue.h" />
+    <ClInclude Include="Json\Parser.h" />
+    <ClInclude Include="JSON\Types.h" />
+    <ClInclude Include="Light\Light.h" />
+    <ClInclude Include="Light\Manager.h" />
+    <ClInclude Include="Light\Plugins\ConsolePlugin.h" />
+    <ClInclude Include="Light\Settings.h" />
+    <ClInclude Include="Light\Types.h" />
+    <ClInclude Include="LOD\Settings.h" />
+    <ClInclude Include="Material\Manager.h" />
+    <ClInclude Include="Material\Material.h" />
+    <ClInclude Include="Material\RGBA.h" />
+    <ClInclude Include="Math\Matrix4.h" />
+    <ClInclude Include="Math\Normals.h" />
+    <ClInclude Include="Math\Tools.h" />
+    <ClInclude Include="Math\Trigonometrics.h" />
+    <ClInclude Include="Math\Tuple2.h" />
+    <ClInclude Include="Math\Tuple3.h" />
+    <ClInclude Include="Math\Tuple4.h" />
+    <ClInclude Include="Math\Vector2.h" />
+    <ClInclude Include="Math\Vector3.h" />
+    <ClInclude Include="Math\Vector4.h" />
+    <ClInclude Include="Media\PathManager.h" />
+    <ClInclude Include="Menu\IMenu.h" />
+    <ClInclude Include="Menu\MenuItem.h" />
+    <ClInclude Include="Mesh\AMesh.h" />
+    <ClInclude Include="Mesh\AMeshManager.h" />
+    <ClInclude Include="Mesh\Format\3ds\3dsloader.h" />
+    <ClInclude Include="Mesh\Format\3ds\Mesh3DS.h" />
+    <ClInclude Include="Mesh\Format\3ds\Mesh3DSManager.h" />
+    <ClInclude Include="Mesh\Format\3ds\Types.h" />
+    <ClInclude Include="Mesh\Format\md2\Md2.h" />
+    <ClInclude Include="Mesh\Format\md2\MeshMD2.h" />
+    <ClInclude Include="Mesh\Format\md2\MeshMD2Manager.h" />
+    <ClInclude Include="Mesh\Format\md5mesh\MD5Model.h" />
+    <ClInclude Include="Mesh\Format\md5mesh\MeshMD5.h" />
+    <ClInclude Include="Mesh\Format\md5mesh\MeshMD5Manager.h" />
+    <ClInclude Include="Mesh\Format\md5mesh\Quat.h" />
+    <ClInclude Include="Mesh\Format\md5mesh\Vector3.h" />
+    <ClInclude Include="Mesh\Format\obj\MeshOBJ.h" />
+    <ClInclude Include="Mesh\Format\obj\MeshOBJManager.h" />
+    <ClInclude Include="Mesh\Format\obj\objloader.h" />
+    <ClInclude Include="Mesh\Format\obj\Types.h" />
+    <ClInclude Include="Mesh\Format\ParticleSystem\ParticleSystem.h" />
+    <ClInclude Include="Mesh\Format\ParticleSystem\ParticleSystemManager.h" />
+    <ClInclude Include="Mesh\Format\Particle\Particle.h" />
+    <ClInclude Include="Mesh\Format\Particle\ParticleManager.h" />
+    <ClInclude Include="Mesh\Format\Particle\Types.h" />
+    <ClInclude Include="Mesh\Format\PreparedObject\PreparedObject.h" />
+    <ClInclude Include="Mesh\Format\PreparedObject\PreparedObjectManager.h" />
+    <ClInclude Include="Mesh\Format\Sprite\Sprite.h" />
+    <ClInclude Include="Mesh\Format\Sprite\SpriteManager.h" />
+    <ClInclude Include="Mesh\Format\VolumeMesh\AVolumeMesh.h" />
+    <ClInclude Include="Mesh\Format\VolumeMesh\BoxMesh.h" />
+    <ClInclude Include="Mesh\Format\VolumeMesh\SphereMesh.h" />
+    <ClInclude Include="Mesh\Format\VolumeMesh\VolumeMeshManager.h" />
+    <ClInclude Include="Mesh\Manager.h" />
+    <ClInclude Include="Mesh\Utils.h" />
+    <ClInclude Include="Mesh\Volume.h" />
+    <ClInclude Include="Mesh\Volume\AABBox.h" />
+    <ClInclude Include="Mesh\Volume\AABBoxNoTranslate.h" />
+    <ClInclude Include="Mesh\Volume\Box.h" />
+    <ClInclude Include="Mesh\Volume\Cylinder.h" />
+    <ClInclude Include="Mesh\Volume\Sphere.h" />
+    <ClInclude Include="Mesh\Volume\Volumes.h" />
+    <ClInclude Include="Misc\Colors.h" />
+    <ClInclude Include="Misc\FPSCounter.h" />
+    <ClInclude Include="Misc\Timer.h" />
+    <ClInclude Include="Parsers\ConfigParser.h" />
+    <ClInclude Include="Parsers\Evaluator.h" />
+    <ClInclude Include="Parsers\LineParser.h" />
+    <ClInclude Include="Parsers\Tokenizer.h" />
+    <ClInclude Include="Parsers\Value.h" />
+    <ClInclude Include="Parsers\Valueizer.h" />
+    <ClInclude Include="Parsers\XMLParser.h" />
+    <ClInclude Include="Physic\ACollider.h" />
+    <ClInclude Include="Physic\CollisionGroup.h" />
+    <ClInclude Include="Physic\ConsolePlugin.h" />
+    <ClInclude Include="Physic\Manager.h" />
+    <ClInclude Include="Physic\Settings.h" />
+    <ClInclude Include="Physic\Types.h" />
+    <ClInclude Include="Physic\World.h" />
+    <ClInclude Include="Renderer\Common.h" />
+    <ClInclude Include="Renderer\FrameSettings.h" />
+    <ClInclude Include="Renderer\IRenderer.h" />
+    <ClInclude Include="Renderer\RenderObject.h" />
+    <ClInclude Include="Renderer\ScreenWriter.h" />
+    <ClInclude Include="Renderer\Settings.h" />
+    <ClInclude Include="Renderer\StillImageRenderer.h" />
+    <ClInclude Include="Scene\Attributes\ColorAttribute.h" />
+    <ClInclude Include="Scene\Attributes\RotationAttribute.h" />
+    <ClInclude Include="Scene\Attributes\TranslationAttribute.h" />
+    <ClInclude Include="Scene\Manager.h" />
+    <ClInclude Include="Scene\Plugins\ConsolePlugin.h" />
+    <ClInclude Include="Scene\Plugins\ViewFrustumRenderer.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneGraphObject.h" />
+    <ClInclude Include="Scene\SceneId.h" />
+    <ClInclude Include="Scene\SceneObjectParser.h" />
+    <ClInclude Include="Scene\SceneParser.h" />
+    <ClInclude Include="Scene\Settings.h" />
+    <ClInclude Include="ScriptNG\Manager.h" />
+    <ClInclude Include="ScriptNG\Plugins\ConsolePlugin.h" />
+    <ClInclude Include="ScriptNG\Settings.h" />
+    <ClInclude Include="Shader\Manager.h" />
+    <ClInclude Include="Shader\Shader.h" />
+    <ClInclude Include="Sky\ASky.h" />
+    <ClInclude Include="Sky\ConsolePlugin.h" />
+    <ClInclude Include="Sky\Manager.h" />
+    <ClInclude Include="Sky\Settings.h" />
+    <ClInclude Include="Sky\SkyBox.h" />
+    <ClInclude Include="Sound\AudioResource.h" />
+    <ClInclude Include="Sound\BaseSound.h" />
+    <ClInclude Include="Sound\Manager.h" />
+    <ClInclude Include="Sound\Sound.h" />
+    <ClInclude Include="Sound\Sound2D.h" />
+    <ClInclude Include="Sound\Sound3D.h" />
+    <ClInclude Include="Terrain\ALayer.h" />
+    <ClInclude Include="Terrain\Manager.h" />
+    <ClInclude Include="Terrain\Plugins\ConsolePlugin.h" />
+    <ClInclude Include="Terrain\Plugins\RenderPlugin.h" />
+    <ClInclude Include="Terrain\Settings.h" />
+    <ClInclude Include="Terrain\Subdivided\Cell.h" />
+    <ClInclude Include="Terrain\Subdivided\Layer.h" />
+    <ClInclude Include="Terrain\Types.h" />
+    <ClInclude Include="Terrain\VBO\Layer.h" />
+    <ClInclude Include="Texture\BaseTexture.h" />
+    <ClInclude Include="Texture\Loader\BMP\Loader.h" />
+    <ClInclude Include="Texture\Loader\JPG\jpeg.h" />
+    <ClInclude Include="Texture\Loader\JPG\Loader.h" />
+    <ClInclude Include="Texture\Loader\PCX\Loader.h" />
+    <ClInclude Include="Texture\Loader\PCX\pcx.h" />
+    <ClInclude Include="Texture\Loader\PNG\Loader.h" />
+    <ClInclude Include="Texture\Loader\png\lodepng.h" />
+    <ClInclude Include="Texture\Loader\TGA\Loader.h" />
+    <ClInclude Include="Texture\Loader\TGA\TGA.h" />
+    <ClInclude Include="Texture\Manager.h" />
+    <ClInclude Include="Texture\Pack.h" />
+    <ClInclude Include="Texture\Texture.h" />
+    <ClInclude Include="Texture\Texture1D.h" />
+    <ClInclude Include="Texture\Texture2D.h" />
+    <ClInclude Include="Texture\Texture3D.h" />
+    <ClInclude Include="Tools\Files.h" />
+    <ClInclude Include="Tools\SharedPtr.h" />
+    <ClInclude Include="Tools\Strings.h" />
+    <ClInclude Include="Tools\Tools.h" />
+    <ClInclude Include="UIKit\Button.h" />
+    <ClInclude Include="UIKit\Label.h" />
+    <ClInclude Include="UIKit\Manager.h" />
+    <ClInclude Include="UIKit\Types.h" />
+    <ClInclude Include="UIKit\UIBaseObject.h" />
+    <ClInclude Include="UIKit\UIFrame.h" />
+    <ClInclude Include="UIKit\UIScreen.h" />
+    <ClInclude Include="UIKit\UITriggerFrame.h" />
+    <ClInclude Include="UI\Event.h" />
+    <ClInclude Include="UI\EventListener.h" />
+    <ClInclude Include="UI\Frame.h" />
+    <ClInclude Include="UI\InterfaceItem.h" />
+    <ClInclude Include="UI\InterfaceManager.h" />
+    <ClInclude Include="Water\Manager.h" />
+    <ClInclude Include="Water\Plugins\ConsolePlugin.h" />
+    <ClInclude Include="Water\Settings.h" />
+    <ClInclude Include="Water\Water.h" />
+    <ClInclude Include="Wind\ConsolePlugin.h" />
+    <ClInclude Include="Wind\Settings.h" />
+    <ClInclude Include="Wind\Wind.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectiveScript\ObjectiveScript.vcxproj">
+      <Project>{c6db82e5-93bc-4a67-8d37-2fa7bebddf29}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
