@@ -4,9 +4,9 @@
 
 
 // Library includes
+#include <SDL2/SDL_events.h>
 
 // Project includes
-#include <Interfaces/Common/Event.h>
 
 // Forward declarations
 
@@ -16,7 +16,7 @@
 namespace UIKit {
 
 
-typedef void (*FPtr)(const Common::Event& e);
+typedef void (*FPtr)( SDL_Event* e );
 
 
 }

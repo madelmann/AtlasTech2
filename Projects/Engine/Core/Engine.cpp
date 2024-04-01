@@ -1,12 +1,12 @@
 
-// This is a compiler directive that includes libraries (For Visual Studio).
-#pragma comment(lib, "glaux.lib")
-#pragma comment(lib, "glu32.lib")
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "winmm.lib")
+// // This is a compiler directive that includes libraries (For Visual Studio).
+// #pragma comment(lib, "glaux.lib")
+// #pragma comment(lib, "glu32.lib")
+// #pragma comment(lib, "opengl32.lib")
+// #pragma comment(lib, "winmm.lib")
 
 
-#pragma comment( linker, "/NODEFAULTLIB:libc.lib" ) 
+// #pragma comment( linker, "/NODEFAULTLIB:libc.lib" ) 
 
 
 #define ENGINE_VERSION_MAJOR	0
@@ -18,7 +18,7 @@
 #include "Engine.h"
 
 // Library includes
-#include <windows.h>
+#include <SDL2/SDL.h>
 
 // Project includes
 #include "GeneralManager.h"
@@ -36,8 +36,8 @@
 #include <Font/Font.h>
 #include <Frustum/Frustum.h>
 #include <Input/ConsolePlugin.h>
-#include <Input/Keyboard/Keyboard.h>
-#include <Input/Mouse/Mouse.h>
+#include <Input/Keyboard.h>
+#include <Input/Mouse.h>
 #include <Interfaces/Renderer/IRendererPlugin.h>
 #include <Light/Light.h>
 #include <Light/Manager.h>
@@ -47,7 +47,6 @@
 #include <Physic/Manager.h>
 #include <Renderer/ScreenWriter.h>
 #include <Scene/Manager.h>
-#include <ScriptNG/Manager.h>
 #include <Shader/Manager.h>
 #include <Sky/Manager.h>
 #include <Sound/Manager.h>
@@ -68,7 +67,6 @@ Engine::Engine(const Common::Logger *p)
   mError(""),
   mCloudManager(0),
   mConsole(0),
-  mDefaultScriptManager(0),
   mDefaultTerrainManager(0),
   mDriver(0),
   mFogManager(0),
@@ -84,7 +82,6 @@ Engine::Engine(const Common::Logger *p)
   mSceneManager(0),
   mScreenManager(0),
   mScreenOutput(0),
-  mScriptManager(0),
   mShaderManager(0),
   mSkyManager(0),
   mSoundManager(0),
@@ -423,7 +420,6 @@ void Engine::initialize()
 	// Setup our objects
 	mCloudManager = new CloudSpace::Manager(this);
 	mConsole = new Console::Console(this, mHDC);
-	mDefaultScriptManager = new ScriptSpace::Manager(this);
 	mDefaultTerrainManager = new Terrain::Manager(this);
 	mFogManager = new FogSpace::Manager(this);
 	mFont = new FontSpace::Font();
@@ -448,9 +444,6 @@ void Engine::initialize()
 
 	// Setup replaceable objects
 	// {
-	if ( !mScriptManager ) {
-		mScriptManager = mDefaultScriptManager;
-	}
 	if ( !mTerrainManager ) {
 		mTerrainManager = mDefaultTerrainManager;
 	}
@@ -513,13 +506,6 @@ void Engine::initialize()
 
 	mScreenWriter->connectFont(mFont);
 
-	{	// Script manager setup
-		mDefaultScriptManager->connectConsole(mConsole);
-		mDefaultScriptManager->connectConsolePrinter(mConsole);
-		mDefaultScriptManager->connectIdGenerator(&mIdGenerator);
-		mDefaultScriptManager->connectMediaPathManager(mMediaPathManager);
-	}
-
 	mShaderManager->connectEngineSettings(this);
 	mShaderManager->connectMediaPathManager(mMediaPathManager);
 
@@ -568,7 +554,6 @@ void Engine::initialize()
 	mScreenWriter->configurationComplete();
 	mSkyManager->configurationComplete();
 
-	mDefaultScriptManager->configurationComplete();
 	mDefaultTerrainManager->configurationComplete();
 
 
@@ -718,7 +703,7 @@ void Engine::loadConfig()
 		screen->setTop(config.getValue("screen_top").toInt());
 	}
 	screen->setWidth(config.getValue("screen_width").toInt());
-	screen->getCenter();
+	// screen->getCenter();
 
 
 	mFPSCounter.allowHighFrequencyTimerUsage(useHighPerformanceCounter());
@@ -751,7 +736,6 @@ bool Engine::loadScene(const std::string& scene)
 
 	//mWaterManager->connectViewer(mViewer);
 
-	mScriptManager->init();
 	mSkyManager->init();
 	if ( usePhysics() ) {
 		mPhysicsManager->load();
@@ -899,11 +883,6 @@ UIKit::IManager* Engine::provideScreenManager() const
 IScreenWriter* Engine::provideScreenWriter() const
 {
 	return mScreenWriter;
-}
-
-ScriptSpace::IManager* Engine::provideScriptManager() const
-{
-	return mScriptManager;
 }
 
 SoundSpace::IManager* Engine::provideSoundManager() const
@@ -1058,14 +1037,6 @@ void Engine::renderImageAtFullScreen(Texture *texture)
 	RenderImage2D(texture, 0.0f, 0.0f, (float)getScreen()->getWidth(), (float)getScreen()->getHeight());
 }
 
-void Engine::replaceScriptManager(ScriptSpace::IManager *m)
-{
-	assert(!mScriptManager);
-
-	// replace default script manager with a user provided implementation
-	mScriptManager = m;
-}
-
 void Engine::replaceTerrainManager(Terrain::IManager *m)
 {
 	assert(!mTerrainManager);
@@ -1194,7 +1165,6 @@ void Engine::shutdown()
 
 	delete mCloudManager;
 	//delete mConsole;
-	aeDelete( mDefaultScriptManager );
 	aeDelete( mDefaultTerrainManager );
 	delete mDriver;
 	delete mFogManager;
@@ -1277,7 +1247,6 @@ bool Engine::unloadScene()
 	mLight->clear();
 	mMediaPathManager->setMap("");
 	mSceneManager->clear();
-	mScriptManager->init();
 	mSkyManager->clear();
 	mTerrainManager->clear();
 

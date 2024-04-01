@@ -4,9 +4,9 @@
 
 
 // Library includes
+#include <SDL2/SDL_events.h>
 
 // Project includes
-#include "Event.h"
 
 // Forward declarations
 
@@ -21,7 +21,7 @@ class IEventHandler
 public:
 	virtual ~IEventHandler() { }
 
-	virtual LRESULT handleEvent(const Event& e) = 0;
+	virtual void handleEvent(SDL_Event* e) = 0;
 
 protected:
 

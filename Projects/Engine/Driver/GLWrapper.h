@@ -15,13 +15,18 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#endif
 
 #include <OpenGL/include/gl.h>										// Header File For The OpenGL32 Library
 #include <OpenGL/include/glext.h>
 #include <OpenGL/include/glu.h>										// Header File For The GLu32 Library
 //#include <OpenGL/include/glut.h>									// Header file for the GL utility library
 #include <OpenGL/include/glaux.h>									// Header File For The GLaux Library
+#endif
+
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include <SDL2/SDL_opengl.h>
+#include <GL/glu.h>
 
 // Project includes
 #include <Interfaces/Common/Types.h>
@@ -31,6 +36,7 @@
 // Namespace declarations
 
 
+/*
 // These are for our multi-texture defines
 #define GL_TEXTURE0_ARB                     0x84C0
 #define GL_TEXTURE1_ARB                     0x84C1
@@ -179,7 +185,7 @@ extern PFNGLPROGRAMLOCALPARAMETER4FARBPROC glProgramLocalParameter4fARB;
 extern PFNGLBINDPROGRAMARBPROC glBindProgramARB;
 extern PFNGLGETOBJECTPARAMETERIVARBPROC glGetObjectParameterivARB;
 extern PFNGLGETINFOLOGARBPROC glGetInfoLogARB;
-
+*/
 
 
 

@@ -1,6 +1,6 @@
 PROJECT(AtlasTech2)
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 
 # cmake policy changes. use "cmake --help-policy <policyid>" for details
 if ( CMAKE_VERSION VERSION_LESS "2.8.0" )

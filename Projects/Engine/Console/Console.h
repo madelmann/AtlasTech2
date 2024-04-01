@@ -6,7 +6,7 @@
 // Library includes
 #include <list>
 #include <string>
-#include <windows.h>
+// #include <windows.h>
 
 // Project includes
 #include "Settings.h"

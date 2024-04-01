@@ -5,9 +5,9 @@
 
 // Library includes
 #include <queue>
+#include <SDL2/SDL_events.h>
 
 // Project includes
-#include <Interfaces/Common/Event.h>
 
 // Forward declarations
 
@@ -24,14 +24,14 @@ public:
 	~EventQueue();
 
 public:
-	const Event& dequeue();
+	SDL_Event* dequeue();
 	bool empty() const;
-	void enqueue(const Event& e);
+	void enqueue(SDL_Event* e);
 
 protected:
 
 private:
-	typedef std::queue<Event> Events;
+	typedef std::queue<SDL_Event*> Events;
 
 private:
 	Events	mEvents;

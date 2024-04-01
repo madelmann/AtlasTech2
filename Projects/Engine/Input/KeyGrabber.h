@@ -24,7 +24,7 @@ public:
 
 	void bind(Key *k);
 
-	LRESULT handleEvent(const Common::Event &e);
+	void handleEvent(SDL_Event* e);
 	void run();
 
 protected:

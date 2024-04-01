@@ -264,7 +264,7 @@ class Matrix4
             mat.m[ 3]*t.x + mat.m[ 7]*t.y + mat.m[11]*t.z + mat.m[15]*t.w);
     }
 
-    __forceinline T getDeterminant()
+    inline T getDeterminant()
     {	
       T det;
 		  det = m[0] * m[5] * m[10];
@@ -277,7 +277,7 @@ class Matrix4
     }
 
 
-  __forceinline bool setInverse()
+  inline bool setInverse()
   {
 		int i, j, k, swap;
 		T temp[16], t;
@@ -346,9 +346,9 @@ class Matrix4
     }
 
     inline void rotateAxis(float angle, const Tuple3<T>& axis) {
-      float sinAngle = fastSin(angle),
-            cosAngle = fastCos(angle),
-            oneMinusCosAngle = 1.0f - cosAngle;
+      float sinAngle = sin(angle);
+      float cosAngle = cos(angle);
+      float oneMinusCosAngle = 1.0f - cosAngle;
 
       setIdentity();
 
@@ -365,7 +365,7 @@ class Matrix4
       m[10] = (axis.z)*(axis.z) + cosAngle*(1-(axis.z)*(axis.z));
     }
 
-    __forceinline void set(const T* elements){
+    inline void set(const T* elements){
        memcpy(m, elements, sizeof(T)*16);
     }
 
@@ -380,7 +380,7 @@ class Matrix4
       m[12] = m12; m[13] = m13; m[14] = m14; m[15] = m15;
     }
 
-    __forceinline void setTranspose()
+    inline void setTranspose()
     {
       T    temp = 0;
       temp  = m[4];  m[4]  = m[1];
@@ -394,7 +394,7 @@ class Matrix4
       m[14] = m[11]; m[11] = temp;
     }
 
-     __forceinline void setIdentity()
+     inline void setIdentity()
     {
       m[ 0] = 1; m[ 1] = 0; m[ 2] = 0; m[ 3] = 0;
       m[ 4] = 0; m[ 5] = 1; m[ 6] = 0; m[ 7] = 0;
@@ -402,7 +402,7 @@ class Matrix4
       m[12] = 0; m[13] = 0; m[14] = 0; m[15] = 1;
     }
 
-    __forceinline void setInverseTranspose()
+    inline void setInverseTranspose()
     {
       if(!setInverse())
         return;
@@ -420,33 +420,33 @@ class Matrix4
   
     inline void rotateX(const float angle){
       setIdentity();
-      m[ 5] =  fastCos(angle);
-      m[ 6] =  fastSin(angle);
+      m[ 5] =  cos(angle);
+      m[ 6] =  sin(angle);
       m[ 9] = -m[6];
       m[10] =  m[5];
     }
 
     inline void rotateY(const float angle){
       setIdentity();
-      m[ 0] =  fastCos(angle);
-      m[ 2] =  fastSin(angle);
+      m[ 0] =  cos(angle);
+      m[ 2] =  sin(angle);
       m[ 8] = -m[2];
       m[10] =  m[0];
     }  
 
     inline void rotateZ(const float angle){
       setIdentity();
-      m[0] =  fastCos(angle);
-      m[1] =  fastSin(angle);
+      m[0] =  cos(angle);
+      m[1] =  sin(angle);
       m[4] = -m[1];
       m[5] =  m[0];
     }
 
     inline void rotateXYZ(const Tuple3<T>& t)
     {
-      float cosX = fastCos(t.x), sinX = fastSin(t.x),
-            cosY = fastCos(t.y), sinY = fastSin(t.y),
-            cosZ = fastCos(t.z), sinZ = fastSin(t.z);
+      float cosX = cos(t.x), sinX = sin(t.x),
+            cosY = cos(t.y), sinY = sin(t.y),
+            cosZ = cos(t.z), sinZ = sin(t.z);
 
       set(cosY * cosZ + sinX * sinY * sinZ,   -cosX * sinZ,    sinX * cosY * sinZ - sinY * cosZ,  0,
           cosY * sinZ - sinX * sinY * cosZ,    cosX * cosZ,   -sinY * sinZ - sinX * cosY * cosZ,  0,
@@ -456,9 +456,9 @@ class Matrix4
 
     inline void rotateXYZ(float x, float y, float z)
     {
-      float cosX = fastCos(x), sinX = fastSin(x),
-            cosY = fastCos(y), sinY = fastSin(y),
-            cosZ = fastCos(z), sinZ = fastSin(z);
+      float cosX = cos(x), sinX = sin(x),
+            cosY = cos(y), sinY = sin(y),
+            cosZ = cos(z), sinZ = sin(z);
 
       set(cosY * cosZ + sinX * sinY * sinZ,   -cosX * sinZ,    sinX * cosY * sinZ - sinY * cosZ,  0,
           cosY * sinZ - sinX * sinY * cosZ,    cosX * cosZ,   -sinY * sinZ - sinX * cosY * cosZ,  0,
@@ -498,7 +498,7 @@ class Matrix4
                   
     }
 
-    __declspec(align(16)) T  m[16];
+    T  m[16];
 };
 
 typedef Matrix4<int>    Matrix4i;

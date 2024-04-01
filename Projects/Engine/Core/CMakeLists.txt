@@ -1,4 +1,7 @@
-INCLUDE(${PROJECT_SOURCE_DIR}/CMake/Base.cmake)
+# INCLUDE(${PROJECT_SOURCE_DIR}/CMake/Base.cmake)
+
+ADD_SUBDIRECTORY( Common )
+ADD_SUBDIRECTORY( Configuration )
 
 SET(SOURCES
 	Common/Viewport.cpp

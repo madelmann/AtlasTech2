@@ -74,7 +74,7 @@ float UIBaseObject::getTop() const
 	return mTop;
 }
 
-LRESULT UIBaseObject::handleEvent(const Common::Event& e)
+LRESULT UIBaseObject::handleEvent(SDL_Event* e)
 {
 	if ( !mActive )
 		return false;
@@ -150,22 +150,22 @@ void UIBaseObject::setLeft(float left)
 	mLeft = left;
 }
 
-void UIBaseObject::setMouseClickEvent(void (*e)(const Common::Event& e))
+void UIBaseObject::setMouseClickEvent(void (*e)(SDL_Event* e))
 {
 	MouseClick = e;
 }
 
-void UIBaseObject::setMouseDownEvent(void (*e)(const Common::Event& e))
+void UIBaseObject::setMouseDownEvent(void (*e)(SDL_Event* e))
 {
 	MouseDown = e;
 }
 
-void UIBaseObject::setMouseMoveEvent(void (*e)(const Common::Event& e))
+void UIBaseObject::setMouseMoveEvent(void (*e)(SDL_Event* e))
 {
 	MouseMove = e;
 }
 
-void UIBaseObject::setMouseUpEvent(void (*e)(const Common::Event& e))
+void UIBaseObject::setMouseUpEvent(void (*e)(SDL_Event* e))
 {
 	MouseUp = e;
 }

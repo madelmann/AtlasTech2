@@ -45,7 +45,7 @@ public:
 
 public:
 	virtual vector3f center() const {
-		return mCenter;
+		return vector3f( mCenter );
 	}
 
 	virtual const vector3f& position() const {

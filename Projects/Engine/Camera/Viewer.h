@@ -28,10 +28,10 @@ public:
 	virtual const float& fov() const;
 	virtual void fov(const float& fov);
 
-	virtual const vector3f& position() const;
+	virtual vector3f position() const;
 	virtual void position(const vector3f& pos);
 
-	virtual const vector3f& rotation() const;
+	virtual vector3f rotation() const;
 	virtual void rotation(const vector3f& rotation);
 
 	virtual const vector3f& view() const;

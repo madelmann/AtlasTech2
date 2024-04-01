@@ -5,8 +5,7 @@
 
 // Library includes
 #include <string>
-#include <windows.h>				// The windows header file.
-//#include <OpenGL/include/gl.h>		// Standard opengl include.
+// #include <windows.h>				// The windows header file.
 
 // Project includes
 #include "Settings.h"

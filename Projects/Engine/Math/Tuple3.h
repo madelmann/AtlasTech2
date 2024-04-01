@@ -64,7 +64,7 @@ class Tuple3
     }
  
     inline Tuple3<T>  operator / (const T scale){
-      return scale ? Tuple3f<T>(x/scale, y/scale, z/scale); Tuple3<T>(0, 0, 0);
+      return scale ? Tuple3<T>(x/scale, y/scale, z/scale) : Tuple3<T>(0, 0, 0);
     }
 
     inline Tuple3<T>& operator += (const Tuple3<T>& right)

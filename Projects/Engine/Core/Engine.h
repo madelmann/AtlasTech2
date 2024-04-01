@@ -11,7 +11,6 @@
 #include <Driver/Driver.h>
 #include <Input/KeyGrabber.h>
 #include <Interfaces/Common/AManager.h>
-#include <Interfaces/Common/Event.h>
 #include <Interfaces/Core/IController.h>
 #include <Interfaces/Core/ICoreManagement.h>
 #include <Interfaces/Core/ICoreUtilities.h>
@@ -74,10 +73,6 @@ namespace Physics {
 	class Manager;
 }
 namespace Scene {
-	class IManager;
-	class Manager;
-}
-namespace ScriptSpace {
 	class IManager;
 	class Manager;
 }
@@ -198,7 +193,6 @@ public:
 	Scene::IManager* provideSceneManager() const;
 	UIKit::IManager* provideScreenManager() const;
 	IScreenWriter* provideScreenWriter() const;
-	ScriptSpace::IManager* provideScriptManager() const;
 	SoundSpace::IManager* provideSoundManager() const;
 	Terrain::IManager* provideTerrainManager() const;
 	TextureSpace::IManager* provideTextureManager() const;
@@ -206,7 +200,6 @@ public:
 
 	// Replacements
 	// {
-	void replaceScriptManager(ScriptSpace::IManager *m);
 	void replaceTerrainManager(Terrain::IManager *m);
 	// }
 
@@ -331,9 +324,7 @@ private:		// Owned classes
 	WaterSpace::Manager			*mWaterManager;
 
 private:	// replaceable managers
-	ScriptSpace::Manager		*mDefaultScriptManager;
 	Terrain::Manager			*mDefaultTerrainManager;
-	ScriptSpace::IManager		*mScriptManager;
 	Terrain::IManager			*mTerrainManager;
 
 private:

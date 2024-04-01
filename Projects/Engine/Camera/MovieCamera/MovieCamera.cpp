@@ -86,6 +86,7 @@ void MovieCamera::process(Action *action)
 				if ( !a ) {
 					return;
 				}
+
 				vector3f actual = position();
 				vector3f desired = a->position();
 

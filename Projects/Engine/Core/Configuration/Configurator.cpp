@@ -35,7 +35,7 @@ std::string Configurator::consumeLine()
 {
 	char line[255];
 
-	sprintf(line, "");
+	// sprintf(line, "");
 	Tools::readstr(mFile, line);
 
 	return std::string(line);
@@ -99,7 +99,7 @@ bool Configurator::load(const std::string& file)
 		return mSuccess;
 	}
 
-	fopen_s(&mFile, file.c_str(), "rt");
+	mFile = fopen(file.c_str(), "rt");
 
 	if ( !mFile ) {
 		warn("could not load configuration file '" + mConfigFile + "'!");

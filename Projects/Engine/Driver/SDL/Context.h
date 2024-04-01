@@ -4,8 +4,8 @@
 
 
 // Library includes
-#include <windows.h>
-#include <SDL/include/SDL.h>
+// #include <windows.h>
+#include <SDL2/SDL.h>
 
 // Project includes
 #include <Common/Logger.h>

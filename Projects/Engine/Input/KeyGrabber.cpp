@@ -22,18 +22,16 @@ void KeyGrabber::bind(Key *k)
 	mKey = k;
 }
 
-LRESULT KeyGrabber::handleEvent(const Common::Event &e)
+void KeyGrabber::handleEvent(SDL_Event* e)
 {
-	if ( mKey && e.uMsg == WM_KEYDOWN ) {
-		mKey->setKeyCode(e.wParam);
-		mKey = 0;
+	if ( mKey && e->type == SDL_KEYDOWN ) {
+		mKey->setKeyCode( reinterpret_cast<SDL_KeyboardEvent*>( e )->keysym.sym );
+		// mKey = 0;
 
 		// we have done all our work, so stop
 		stop();
-		return true;
+		return;
 	}
-
-	return false;
 }
 
 void KeyGrabber::run()

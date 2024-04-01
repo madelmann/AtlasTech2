@@ -36,17 +36,12 @@ void getNormal(vector3f v[3], vector3f *normal)
     //*normal = normalize(*normal);
 }
 
-vector3f normalize(vector3f vector)
+vector3f normalize( vector3f vector )
 {
 	// Get the magnitude of our normal
-	float magnitude = (float)sqrt( (vector.x * vector.x) + 
-								   (vector.y * vector.y) + 
-								   (vector.z * vector.z) );				
+	float magnitude = static_cast<float>( sqrt( (vector.x * vector.x) + (vector.y * vector.y) + (vector.z * vector.z) ) );
 
 	// Now that we have the magnitude, we can divide our vector by that magnitude.
-	// That will make our vector a total length of 1.  
-	vector = vector / magnitude;		
-
-	// Finally, return our normalized vector
-	return vector;										
+	// That will make our vector a total length of 1.
+	return vector / magnitude;
 }

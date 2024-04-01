@@ -5,12 +5,12 @@
 
 // Library includes
 #include <string>
+#include <SDL2/SDL_events.h>
 
 // Project includes
 #include "Types.h"
 #include <Driver/GLWrapper.h>
 #include <Font/Font.h>
-#include <Interfaces/Common/Event.h>
 #include <Math/Vector3.h>
 
 // Forward declarations
@@ -37,22 +37,22 @@ public:
 	virtual void render() = 0;
 
 public:	// Events
-	void setMouseClickEvent(void (*e)(const Common::Event& e));
+	void setMouseClickEvent(void (*e)(SDL_Event* e));
 	void setMouseDownEvent(FPtr);
 	void setMouseMoveEvent(FPtr);
 	void setMouseUpEvent(FPtr);
 
-	virtual LRESULT handleEvent(const Common::Event& e);
+	virtual void handleEvent(SDL_Event* e);
 
-	virtual bool onKeyDown(WPARAM /*key*/) { return false; }
-	virtual bool onKeyPress(WPARAM /*key*/) { return false; }
-	virtual bool onKeyUp(WPARAM /*key*/) { return false; }
+	virtual bool onKeyDown(SDL_Event* /*e*/) { return false; }
+	virtual bool onKeyPress(SDL_Event* /*e*/) { return false; }
+	virtual bool onKeyUp(SDL_Event* /*e*/) { return false; }
 
-	virtual bool onMouseClick(const Common::Event& /*e*/) { return false; }
-	virtual bool onMouseDblClick(const Common::Event& /*e*/) { return false; }
-	virtual bool onMouseDown(const Common::Event&  /*e*/) { return false; }
-	virtual bool onMouseMove(const Common::Event&  /*e*/) { return false; }
-	virtual bool onMouseUp(const Common::Event&  /*e*/) { return false; }
+	virtual bool onMouseClick(SDL_Event* /*e*/) { return false; }
+	virtual bool onMouseDblClick(SDL_Event* /*e*/) { return false; }
+	virtual bool onMouseDown(SDL_Event*  /*e*/) { return false; }
+	virtual bool onMouseMove(SDL_Event*  /*e*/) { return false; }
+	virtual bool onMouseUp(SDL_Event*  /*e*/) { return false; }
 
 public:
 	void focus();
@@ -99,7 +99,7 @@ protected:
 	bool			mVisible;
 
 protected:	// Events
-	void (*MouseClick)(const Common::Event& e);
+	void (*MouseClick)(SDL_Event* e);
 	FPtr	MouseDown;
 	FPtr	MouseMove;
 	FPtr	MouseUp;

@@ -4,10 +4,10 @@
 
 
 // Library includes
-#include <OpenAL/include/al.h>
-#include <OpenAL/include/alc.h>
-#include <OpenAL/include/alut.h>
-#include <OpenAL/include/Framework.h>
+#include <AL/al.h>
+#include <AL/alc.h>
+#include <AL/alut.h>
+// #include <AL/Framework.h>
 
 // Project includes
 #include <Interfaces/Core/Object.h>

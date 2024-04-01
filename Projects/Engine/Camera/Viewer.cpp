@@ -62,7 +62,7 @@ void Viewer::look()
 			  mUpVector.x, mUpVector.y, mUpVector.z);
 }
 
-const vector3f& Viewer::position() const
+vector3f Viewer::position() const
 {
 	return mPosition;
 }
@@ -72,7 +72,7 @@ void Viewer::position(const vector3f& pos)
 	mPosition = pos;
 }
 
-const vector3f& Viewer::rotation() const
+vector3f Viewer::rotation() const
 {
 	return mRotation;
 }

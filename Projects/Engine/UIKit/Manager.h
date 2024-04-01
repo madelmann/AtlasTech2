@@ -8,7 +8,6 @@
 
 // Project includes
 #include <Common/Logger.h>
-#include <Interfaces/Common/Event.h>
 #include <Interfaces/UIKit/IManager.h>
 
 // Forward declarations
@@ -43,7 +42,7 @@ public:
 	void add(UIScreen *screen);
 	bool contains(UIScreen *screen);
 	UIScreen* get(const std::string& name);
-	LRESULT handleEvent(const Common::Event& e);
+	LRESULT handleEvent(SDL_Event* e);
 	void hide(UIScreen *screen);
 	void hide(const std::string& screen);
 	void remove(UIScreen *screen);

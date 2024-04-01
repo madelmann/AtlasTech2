@@ -34,7 +34,7 @@ void UIScreen::addMenuItem(MenuItem *item)
 	mMenuItems.push_back(item);
 }
 
-bool UIScreen::onMouseClick(const Common::Event& e)
+bool UIScreen::onMouseClick(SDL_Event* e)
 {
 	float x = LOWORD(e.lParam);
 	float y = HIWORD(e.lParam);
@@ -55,7 +55,7 @@ bool UIScreen::onMouseClick(const Common::Event& e)
 	return false;
 }
 
-bool UIScreen::onMouseDown(const Common::Event& e)
+bool UIScreen::onMouseDown(SDL_Event* e)
 {
 	float x = LOWORD(e.lParam);
 	float y = HIWORD(e.lParam);
@@ -76,7 +76,7 @@ bool UIScreen::onMouseDown(const Common::Event& e)
 	return false;
 }
 
-bool UIScreen::onMouseMove(const Common::Event& e)
+bool UIScreen::onMouseMove(SDL_Event* e)
 {
 	float x = LOWORD(e.lParam);
 	float y = HIWORD(e.lParam);
@@ -97,7 +97,7 @@ bool UIScreen::onMouseMove(const Common::Event& e)
 	return false;
 }
 
-bool UIScreen::onMouseUp(const Common::Event& e)
+bool UIScreen::onMouseUp(SDL_Event* e)
 {
 	float x = LOWORD(e.lParam);
 	float y = HIWORD(e.lParam);

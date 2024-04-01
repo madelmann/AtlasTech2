@@ -8,7 +8,6 @@
 
 // Project includes
 #include "UIBaseObject.h"
-#include <Interfaces/Common/Event.h>
 
 // Forward declarations
 namespace TextureSpace {
@@ -34,7 +33,7 @@ public:
 public:
 	// Event handling
 	// {
-	virtual LRESULT handleEvent(const Common::Event& e);
+	virtual void handleEvent(SDL_Event* e);
 	// }
 
 	virtual void render();

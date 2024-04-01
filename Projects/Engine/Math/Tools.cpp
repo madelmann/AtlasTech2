@@ -23,20 +23,12 @@ const double dPI = 2 * std::acos(0.0);
 
 vector3f cross(const vector3f& v1, const vector3f& v2)
 {
-	vector3f r;	
-
-	// Calculate the cross product with the non communitive equation
-	r.x = ((v1.y * v2.z) - (v1.z * v2.y));
-	r.y = ((v1.z * v2.x) - (v1.x * v2.z));
-	r.z = ((v1.x * v2.y) - (v1.y * v2.x));
-
-	// Return the cross product
-	return r;										 
+	return vector3f( ((v1.y * v2.z) - (v1.z * v2.y)), ((v1.z * v2.x) - (v1.x * v2.z)), ((v1.x * v2.y) - (v1.y * v2.x)) );
 }
 
 float distance(const vector3f& v1, const vector3f& v2)
 {
-	return fastSquareRoot(power(v1.x + v2.x) + power(v1.y + v2.y) + power(v1.z + v2.z));
+	return fastsqrtf( power(v1.x + v2.x) + power(v1.y + v2.y) + power(v1.z + v2.z) );
 }
 
 float fastsqrtf(const float x)
@@ -59,6 +51,7 @@ float fastsqrtf(const float x)
 	return u.x;
 }
 
+/*
 float fastSquareRoot(float x)
 {
 	__asm {
@@ -69,6 +62,7 @@ float fastSquareRoot(float x)
 
 	return x;
 }
+*/
 
 /////////////////////////////////////// MAGNITUDE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 /////
@@ -79,7 +73,7 @@ float fastSquareRoot(float x)
 float magnitude(const vector3f& vNormal)
 {
 	// Here is the equation:  magnitude = sqrt(V.x^2 + V.y^2 + V.z^2) : Where V is the vector
-	return fastSquareRoot( (vNormal.x * vNormal.x) + (vNormal.y * vNormal.y) + (vNormal.z * vNormal.z) );
+	return fastsqrtf( (vNormal.x * vNormal.x) + (vNormal.y * vNormal.y) + (vNormal.z * vNormal.z) );
 }
 
 float power(float p)

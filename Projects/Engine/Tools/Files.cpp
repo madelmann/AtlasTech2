@@ -4,7 +4,7 @@
 
 // Library includes
 #include <fstream>
-#include <io.h>
+#include <stdio.h>
 
 // Project includes
 
@@ -22,7 +22,7 @@ bool exists(const std::string& filename)
 	}
 
 	std::ifstream file( filename.c_str() );
-	return (file != 0);
+	return file.is_open();
 }
 
 
@@ -45,7 +45,7 @@ std::string _ExtractFileExt(const std::string& filename)
 	d++;
 
     char buffer[255] = "";
-	sprintf_s(buffer, "%s", filename.c_str());
+	sprintf(buffer, "%s", filename.c_str());
 
 	std::string result;
 

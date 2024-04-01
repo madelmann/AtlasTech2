@@ -58,14 +58,14 @@ float UIFrame::getWidth() const
 	return mWidth;
 }
 
-LRESULT UIFrame::handleEvent(const Common::Event& e)
+void UIFrame::handleEvent(SDL_Event* e)
 {
 	if ( !mActive )
-		return false;
+		return;
 
 	for ( UIFrameList::iterator it = mObjects.begin(); it != mObjects.end(); it++ ) {
 		if ( (*it)->handleEvent(e) ) {
-			return true;
+			return;
 		}
 	}
 

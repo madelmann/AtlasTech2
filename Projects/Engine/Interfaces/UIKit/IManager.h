@@ -5,10 +5,10 @@
 
 // Library includes
 #include <string>
+#include <SDL2/SDL_events.h>
 
 // Project includes
 #include <Interfaces/Common/AManager.h>
-#include <Interfaces/Common/Event.h>
 
 // Forward declarations
 
@@ -29,7 +29,7 @@ public:
 	virtual void add(UIScreen *screen) = 0;
 	virtual bool contains(UIScreen *screen) = 0;
 	virtual UIScreen* get(const std::string& screen) = 0;
-	virtual LRESULT handleEvent(const Common::Event& e) = 0;
+	virtual LRESULT handleEvent(SDL_Event* e) = 0;
 	virtual void hide(const std::string& screen) = 0;
 	virtual void hide(UIScreen *screen) = 0;
 	virtual void remove(UIScreen *screen) = 0;

@@ -4,11 +4,13 @@
 
 
 // MS pragmas
-#pragma comment(lib, "opengl32.lib")
+// #pragma comment(lib, "opengl32.lib")
 
 // Library includes
-#include <windows.h>
-#include <OpenGL/include/gl.h>										// Header File For The OpenGL32 Library
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include <SDL2/SDL_opengl.h>
+#include <GL/glu.h>
 
 // Project includes
 #include <Common/Logger.h>

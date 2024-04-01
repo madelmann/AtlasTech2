@@ -16,7 +16,6 @@
 #include <Core/EngineSettings.h>
 #include <Core/EngineStates.h>
 #include <Interfaces/Common/AProcess.h>
-#include <Interfaces/Common/Event.h>
 #include <Interfaces/Common/IEventHandler.h>
 #include <Interfaces/Common/AProcessHandler.h>
 #include <Interfaces/Core/IGeneralManager.h>

@@ -27,10 +27,11 @@ public:
 	  mFrameBufferEXT(false),
 	  mMaxLights(0),
 	  mOcclusionQuery(false),
+	  mVertexBufferObjects(false),
 	  mGL_ARB_point_parameters(false),
 	  mglActiveTextureARB(false),
 	  mglFogCoordfEXT(false),
-	  mVertexBufferObjects(false)
+	  mglMultiTexCoord2fARB(false)
 	{ }
 
 public:

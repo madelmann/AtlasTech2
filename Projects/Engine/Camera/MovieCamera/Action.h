@@ -50,11 +50,12 @@ class MoveAction : public Action
 {
 public:
 	MoveAction(const vector3f& position)
-	: Action(Type::Move),
-	  mPosition(position)
-	{ }
+	: Action(Type::Move)
+	{
+		mPosition = position;
+	}
 
-	const vector3f& position() const {
+	vector3f position() const {
 		return mPosition;
 	}
 
@@ -67,11 +68,12 @@ class RotateAction : public Action
 {
 public:
 	RotateAction(const vector3f& rotation)
-	: Action(Type::Rotate),
-	  mRotation(rotation)
-	{ }
+	: Action(Type::Rotate)
+	{
+		mRotation = rotation;
+	}
 
-	const vector3f& rotation() const {
+	vector3f rotation() const {
 		return mRotation;
 	}
 
