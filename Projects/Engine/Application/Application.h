@@ -6,9 +6,7 @@
 // Library includes
 #include <list>
 
-#ifdef _WIN32
-#	include <windows.h>
-#endif
+#include <SDL2/SDL.h>
 
 // Project includes
 #include <Common/Logger.h>
@@ -36,9 +34,8 @@ using Console::IConsole;
 using Core::IScreenWriter;
 
 
-#ifdef _WIN32
-extern LRESULT CALLBACK WinProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-#endif
+// Forward declarations for SDL event handling
+union SDL_Event;
 
 
 namespace Core {
@@ -50,23 +47,20 @@ class Application : public Common::AProcess,
 					protected Common::Logger
 {
 public:
-	Application(const std::string& name, HINSTANCE instance);
+	Application(const std::string& name);
 	virtual ~Application();
 
 public:
 	virtual void initialize(const std::string& cmdline) = 0;
 
 public:
-#ifdef _WIN32
-	LRESULT CALLBACK handle(const Common::Event &e, HWND hwnd);
-#endif
+	bool handleSDLEvent(const SDL_Event& event);
 
 	void exec();
 	void initialize();
 	void update(float elapsedTime);
 
-	HWND hwnd() const;
-	HINSTANCE instance() const;
+	SDL_Window* window() const;
 	const std::string& name() const;
 
 protected:
@@ -87,9 +81,9 @@ private:
 	void autoexec();
 
 private:
-	HWND		mHWND;
-	HINSTANCE	mInstance;
+	SDL_Window*	mWindow;
 	std::string	mName;
+	bool		mRunning;
 
 private:
 	bool	mShowDebugInterface;

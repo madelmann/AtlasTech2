@@ -4,8 +4,8 @@
 
 
 // Library includes
-// #include <windows.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 
 // Project includes
 #include <Common/Logger.h>
@@ -36,7 +36,9 @@ public:
 public:
 	bool change(const Settings& s);
 	const Settings& provideSettings() const;
-	bool setup(HWND hwnd, const Settings& s);
+	bool setup(SDL_Window* window, const Settings& s);
+	SDL_Window* getWindow() const;
+	SDL_GLContext getGLContext() const;
 
 protected:
 	virtual bool createSDLContext();
@@ -47,10 +49,9 @@ private:
 	void startup();
 
 private:
-	HDC			mDeviceContext;
-	HGLRC		mRenderingContext;
-	Settings	mSettings;
-	HWND		mWindowHandle;
+	SDL_Window*		mWindow;
+	SDL_GLContext	mGLContext;
+	Settings		mSettings;
 };
 
 

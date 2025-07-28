@@ -76,11 +76,11 @@ class Arena : public Core::Application,
 			  public Network::ILocalPlayerManager
 {
 public:
-	Arena(HINSTANCE instance);
+	Arena();
 	~Arena();
 
 public:
-	LRESULT handleEvent(const Common::Event &e);
+	bool handleEvent(const SDL_Event &e);
 
 	void initialize(const std::string& cmdLine);
 	void run();
@@ -94,7 +94,7 @@ private:
 	void dispatchMouseDown(const Common::Event& e);
 	void dispatchMouseUp(const Common::Event& e);
 
-	bool onKeyPress(WPARAM key);
+	bool onKeyPress(SDL_Keycode key);
 
 private:
 	void loadConfig();

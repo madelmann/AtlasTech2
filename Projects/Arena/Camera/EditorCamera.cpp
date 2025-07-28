@@ -3,6 +3,7 @@
 #include "EditorCamera.h"
 
 // Library includes
+#include <SDL2/SDL.h>
 
 // Project includes
 #include "globals.h"
@@ -102,25 +103,25 @@ void EditorCamera::setViewByMouse()
 	float angleZ = 0.0f;							// This will be the value we need to rotate around the Y axis (Left and Right)
 	static float currentRotX = 0.0f;
 
-	POINT mousePos;									// This is a window structure that holds an X and Y
+	int mouseX, mouseY;
 	// Get the mouse's current X, Y position
-	if ( !GetCursorPos(&mousePos) ) {
-		GetLastError();
-	}
+	SDL_GetMouseState(&mouseX, &mouseY);
 
-	POINT center = mEngine->getScreen()->getCenter();
+	// Get screen center
+	int centerX = mEngine->getScreen()->getWidth() / 2;
+	int centerY = mEngine->getScreen()->getHeight() / 2;
 
 	// If our cursor is still in the middle, we never moved... so don't update the screen
-	if ( (mousePos.x == center.x) && (mousePos.y == center.y) ) {
+	if ( (mouseX == centerX) && (mouseY == centerY) ) {
 		return;
 	}
 
 	// Set the mouse position to the middle of our window
-	SetCursorPos(center.x, center.y);
+	SDL_WarpMouseInWindow(nullptr, centerX, centerY);
 
 	// Get the direction the mouse moved in, but bring the number down to a reasonable amount
-	angleY = (float)( (center.x - mousePos.x) ) / g_fMouseSpeedDown;
-	angleZ = (float)( (center.y - mousePos.y) ) / g_fMouseSpeedDown;
+	angleY = (float)( (centerX - mouseX) ) / g_fMouseSpeedDown;
+	angleZ = (float)( (centerY - mouseY) ) / g_fMouseSpeedDown;
 
 	static float lastRotX = 0.0f; 
  	lastRotX = currentRotX; // We store off the currentRotX and will use it in when the angle is capped

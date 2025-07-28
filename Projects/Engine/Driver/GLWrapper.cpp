@@ -1,9 +1,9 @@
-
 // Header
 #include "GLWrapper.h"
 
 // Library includes
 #include <map>
+#include <cmath>
 
 // Project includes
 #include "DriverInformation.h"
@@ -14,89 +14,13 @@
 
 // Namespace declarations
 
-
 static DriverInformation& DI = DriverInformation::getInstance();
 
-
-// fog extension function pointer - begin
-PFNGLFOGCOORDFEXTPROC			glFogCoordfEXT = NULL;
-// fog extension function pointer - end
-
-// ARB multitexturing function pointers - begin
-PFNGLACTIVETEXTUREPROC			glActiveTexture = NULL;
-PFNGLCLIENTACTIVETEXTUREPROC	glClientActiveTexture = NULL;
-PFNGLMULTITEXCOORD2FARBPROC		glMultiTexCoord2fARB = NULL;
-PFNGLACTIVETEXTUREARBPROC		glActiveTextureARB = NULL;
-// ARB multitexturing function pointers - end
-
-// glPointParameter - begin
-PFNGLPOINTPARAMETERFARBPROC		glPointParameterfARB = NULL;
-PFNGLPOINTPARAMETERFVARBPROC	glPointParameterfvARB = NULL;
-// glPointParameter - end
-
-// The function pointers for shaders
-PFNGLCREATESHADEROBJECTARBPROC glCreateShaderObjectARB = NULL;
-PFNGLSHADERSOURCEARBPROC glShaderSourceARB = NULL;
-PFNGLCOMPILESHADERARBPROC glCompileShaderARB = NULL;
-PFNGLCREATEPROGRAMOBJECTARBPROC glCreateProgramObjectARB = NULL;
-PFNGLATTACHOBJECTARBPROC glAttachObjectARB = NULL;
-PFNGLLINKPROGRAMARBPROC glLinkProgramARB = NULL;
-PFNGLUSEPROGRAMOBJECTARBPROC glUseProgramObjectARB = NULL;
-PFNGLVALIDATEPROGRAMARBPROC glValidateProgramARB = NULL;
-PFNGLUNIFORM1IARBPROC glUniform1iARB = NULL;
-PFNGLUNIFORM2IARBPROC glUniform2iARB = NULL;
-PFNGLUNIFORM3IARBPROC glUniform3iARB = NULL;
-PFNGLUNIFORM4IARBPROC glUniform4iARB = NULL;
-PFNGLUNIFORM1FARBPROC glUniform1fARB = NULL;
-PFNGLUNIFORM2FARBPROC glUniform2fARB = NULL;
-PFNGLUNIFORM3FARBPROC glUniform3fARB = NULL;
-PFNGLUNIFORM4FARBPROC glUniform4fARB = NULL;
-PFNGLUNIFORM1FVARBPROC glUniform1fvARB = NULL;
-PFNGLUNIFORM2FVARBPROC glUniform2fvARB = NULL;
-PFNGLUNIFORM3FVARBPROC glUniform3fvARB = NULL;
-PFNGLUNIFORM4FVARBPROC glUniform4fvARB = NULL;
-PFNGLUNIFORMMATRIX3FVARBPROC glUniformMatrix3fvARB = NULL;
-PFNGLUNIFORMMATRIX4FVARBPROC glUniformMatrix4fvARB = NULL;
-PFNGLGETUNIFORMLOCATIONARBPROC glGetUniformLocationARB = NULL;
-PFNGLDETACHOBJECTARBPROC glDetachObjectARB = NULL;
-PFNGLDELETEOBJECTARBPROC glDeleteObjectARB = NULL;
-PFNGLPROGRAMLOCALPARAMETER4FARBPROC glProgramLocalParameter4fARB = NULL;
-PFNGLBINDPROGRAMARBPROC glBindProgramARB = NULL;
-PFNGLGETOBJECTPARAMETERIVARBPROC glGetObjectParameterivARB = NULL;
-PFNGLGETINFOLOGARBPROC glGetInfoLogARB = NULL;
-
-// WGL_EXT_swap_control - begin
-PFNWGLEXTSWAPCONTROLPROC		glSwapIntervalEXT = NULL;
-PFNWGLEXTGETSWAPINTERVALPROC	glGetSwapIntervalEXT = NULL;
-// WGL_EXT_swap_control - end
-
-// Vertex Buffer objects - begin
-PFNGLBINDBUFFERPROC		glBindBuffer = NULL;
-PFNGLBUFFERDATAPROC		glBufferData = NULL;
-PFNGLBUFFERSUBDATAPROC	glBufferSubData = NULL;
-PFNGLGENBUFFERSPROC		glGenBuffers = NULL;
-PFNGLDELETEBUFFERSPROC	glDeleteBuffers = NULL;
-// Vertex Buffer objects - end
-
-// GL_ARB_occlusion_query function pointers - begin
-PFNGLGENQUERIESARBPROC			glGenQueriesARB = NULL;
-PFNGLDELETEQUERIESARBPROC		glDeleteQueriesARB = NULL;
-PFNGLISQUERYARBPROC				glIsQueryARB = NULL;
-PFNGLBEGINQUERYARBPROC			glBeginQueryARB = NULL;
-PFNGLENDQUERYARBPROC			glEndQueryARB = NULL;
-PFNGLGETQUERYIVARBPROC			glGetQueryivARB = NULL;
-PFNGLGETQUERYOBJECTIVARBPROC	glGetQueryObjectivARB = NULL;
-PFNGLGETQUERYOBJECTUIVARBPROC	glGetQueryObjectuivARB = NULL;
-// GL_ARB_occlusion_query function pointers - end
-
-
 namespace GL {
-
 
 void CGLDriverStates::setCullMode(CGLDriverStates::CullMode_t cullMode)
 {
 	aeCullFace(cullMode == CCW ? GL_BACK : GL_FRONT);
-
 	mCullMode = cullMode;
 }
 
@@ -105,9 +29,7 @@ CGLDriverStates::CullMode_t CGLDriverStates::getCullMode() const
 	return mCullMode;
 }
 
-
 }
-
 
 // AtlasEngine driver wrappers
 
@@ -119,8 +41,7 @@ static std::map<GLenum, GLboolean>	g_DriverStates;
 static unsigned int					g_ImmediateModeLeft	= 0;
 static unsigned int 				g_MaxtrixesLeft		= 0;
 
-
-void aeActiveTexture (unsigned int target)
+void aeActiveTexture(unsigned int target)
 {
 	if ( g_ActiveTexture == target ) {
 		return;
@@ -145,7 +66,13 @@ void aeBegin(unsigned int mode)
 
 void aeBeginQuery(unsigned int id)
 {
-	glBeginQueryARB(GL_SAMPLES_PASSED_ARB, id);
+	// For minimal version, skip occlusion queries
+	// glBeginQueryARB(GL_SAMPLES_PASSED_ARB, id);
+}
+
+void aeBindTexture(unsigned int target, unsigned int texture)
+{
+	glBindTexture(target, texture);
 }
 
 void aeBlendFunc(unsigned int sfactor, unsigned int dfactor)
@@ -158,35 +85,47 @@ void aeCallList(unsigned int list)
 	glCallList(list);
 }
 
-void aeColor(const vector3f& color)
+void aeClear(unsigned int mask)
 {
-	//glColor3f(color.x, color.y, color.z);
-	glColor4f(color.x, color.y, color.z, 1.f);
+	glClear(mask);
 }
 
-void aeColor(const vector4f& color)
+void aeClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-	glColor4f(color.x, color.y, color.z, color.w);
+	glClearColor(red, green, blue, alpha);
 }
 
-void aeColor3f(float c1, float c2, float c3)
+void aeClearDepth(GLclampd depth)
 {
-	glColor3f(c1, c2, c3);
+	glClearDepth(depth);
 }
 
-void aeColor4f(float c1, float c2, float c3, float c4)
+void aeColor3f(float red, float green, float blue)
 {
-	glColor4f(c1, c2, c3, c4);
+	glColor3f(red, green, blue);
 }
 
-void aeCreateBuffer (unsigned int &bufferId)
+void aeColor3v(const vector3f& color)
 {
-    // Make sure we don't loose the reference to the previous buffer if there is one
-    aeDeleteBuffer(bufferId);
-    glGenBuffers(1, &bufferId);
+	aeColor3f(color.x, color.y, color.z);
 }
 
-void aeCullFace (unsigned int mode)
+void aeColor4f(float red, float green, float blue, float alpha)
+{
+	glColor4f(red, green, blue, alpha);
+}
+
+void aeColor4v(const vector4f& color)
+{
+	aeColor4f(color.x, color.y, color.z, color.w);
+}
+
+void aeColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
+{
+	glColorMask(red, green, blue, alpha);
+}
+
+void aeCullFace(unsigned int mode)
 {
 	if ( g_CullFace == mode ) {
 		return;
@@ -196,20 +135,20 @@ void aeCullFace (unsigned int mode)
 	glCullFace(mode);
 }
 
-void aeDeleteBuffer (unsigned int &bufferId)
-{
-    if ( bufferId != 0 ) {
-        glDeleteBuffers(1, &bufferId);
-        bufferId = 0;
-    }
-}
-
 void aeDeleteLists(unsigned int list, AEsizei range)
 {
-	if ( list != 0 ) {
-		glDeleteLists(list, range);
-		list = 0;
-	}
+	glDeleteLists(list, range);
+}
+
+void aeDeleteQueries(AEsizei n, const unsigned int *ids)
+{
+	// For minimal version, skip occlusion queries
+	// glDeleteQueriesARB(n, ids);
+}
+
+void aeDeleteTextures(AEsizei n, const unsigned int *textures)
+{
+	glDeleteTextures(n, textures);
 }
 
 void aeDepthFunc(unsigned int func)
@@ -217,88 +156,126 @@ void aeDepthFunc(unsigned int func)
 	glDepthFunc(func);
 }
 
-void aeDepthMask(unsigned char flag, bool force)
+void aeDepthMask(GLboolean flag)
 {
-	if ( force || g_DepthMaskEnabled != flag) {
-		glDepthMask(flag);
+	if ( g_DepthMaskEnabled == flag ) {
+		return;
 	}
 
 	g_DepthMaskEnabled = flag;
+	glDepthMask(flag);
 }
 
-void aeDisable(unsigned int cap, bool force)
+void aeDisable(unsigned int cap)
 {
-	if ( force || g_DriverStates[cap] != GL_FALSE ) {
-		g_DriverStates[cap] = GL_FALSE;
-		glDisable(cap);
+	std::map<GLenum, GLboolean>::iterator it = g_DriverStates.find(cap);
+	if ( it != g_DriverStates.end() ) {
+		if ( (*it).second == false ) {
+			return;
+		}
 	}
+
+	g_DriverStates[cap] = false;
+	glDisable(cap);
 }
 
-void aeEnable(unsigned int cap, bool force)
+void aeDrawArrays(unsigned int mode, int first, AEsizei count)
 {
-	if ( force || g_DriverStates[cap] != GL_TRUE ) {
-		g_DriverStates[cap] = GL_TRUE;
-		glEnable(cap);
+	glDrawArrays(mode, first, count);
+}
+
+void aeEnable(unsigned int cap)
+{
+	std::map<GLenum, GLboolean>::iterator it = g_DriverStates.find(cap);
+	if ( it != g_DriverStates.end() ) {
+		if ( (*it).second == true ) {
+			return;
+		}
 	}
+
+	g_DriverStates[cap] = true;
+	glEnable(cap);
 }
 
 void aeEnd()
 {
-	// Exit immediate mode...
-	glEnd();
-	// ... and decrement counter
+	// Decrement counter...
 	g_ImmediateModeLeft--;
+	// ... and leave immediate mode
+	glEnd();
 }
 
-void aeEndList()
+void aeEndQuery(unsigned int target)
 {
-	glEndList();
+	// For minimal version, skip occlusion queries
+	// glEndQueryARB(target);
 }
 
-void aeEndQuery()
+GLboolean aeIsEnabled(unsigned int cap)
 {
-	glEndQueryARB(GL_SAMPLES_PASSED_ARB);
+	return glIsEnabled(cap);
 }
 
-void aeForceDisable ( unsigned int cap )
+void aeForceEnable(unsigned int cap)
 {
-	g_DriverStates[cap] = GL_FALSE;
-	glDisable(cap);	
-}
-
-void aeForceEnable ( unsigned int cap )
-{
-	g_DriverStates[cap] = GL_TRUE;
+	g_DriverStates[cap] = true;
 	glEnable(cap);
 }
 
-unsigned int aeGenLists (int range)
+void aeFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+{
+	glFrustum(left, right, bottom, top, zNear, zFar);
+}
+
+unsigned int aeGenLists(AEsizei range)
 {
 	return glGenLists(range);
 }
 
-unsigned int aeGetAttributesLeft()
+void aeGenQueries(AEsizei n, unsigned int *ids)
 {
-	return g_AttributesLeft;
+	// For minimal version, skip occlusion queries
+	// glGenQueriesARB(n, ids);
+	for (int i = 0; i < n; i++) {
+		ids[i] = 0;
+	}
 }
 
-unsigned int aeGetImmediateModeLeft()
+void aeGenTextures(AEsizei n, unsigned int *textures)
 {
-	return g_ImmediateModeLeft;
+	glGenTextures(n, textures);
 }
 
-unsigned int aeGetMatricesLeft()
+void aeGetBooleanv(unsigned int pname, GLboolean *params)
 {
-	return g_MaxtrixesLeft;
+	glGetBooleanv(pname, params);
 }
 
-bool aeGetState (unsigned int cap)
+void aeGetDoublev(unsigned int pname, GLdouble *params)
 {
-	GLboolean state;
+	glGetDoublev(pname, params);
+}
 
-	glGetBooleanv(cap, &state);
+void aeGetFloatv(unsigned int pname, GLfloat *params)
+{
+	glGetFloatv(pname, params);
+}
 
-	return (state > 0);
+void aeGetIntegerv(unsigned int pname, int *params)
+{
+	glGetIntegerv(pname, params);
+}
+
+void aeGetQueryObjectuiv(unsigned int id, unsigned int pname, unsigned int *params)
+{
+	// For minimal version, skip occlusion queries
+	// glGetQueryObjectuivARB(id, pname, params);
+	*params = 0;
+}
+
+const GLubyte* aeGetString(unsigned int name)
+{
+	return glGetString(name);
 }
 
 void aeHint(unsigned int target, unsigned int mode)
@@ -306,53 +283,54 @@ void aeHint(unsigned int target, unsigned int mode)
 	glHint(target, mode);
 }
 
-unsigned char aeIsEnabled (unsigned int cap)
+void aeLightf(unsigned int light, unsigned int pname, GLfloat param)
 {
-	return glIsEnabled(cap);
+	glLightf(light, pname, param);
 }
 
-unsigned char aeIsList (unsigned int list)
+void aeLightfv(unsigned int light, unsigned int pname, const GLfloat *params)
 {
-	return glIsList(list);
+	glLightfv(light, pname, params);
 }
 
-void aeLoadIdentity ()
+void aeLightModelf(unsigned int pname, GLfloat param)
+{
+	glLightModelf(pname, param);
+}
+
+void aeLightModelfv(unsigned int pname, const GLfloat *params)
+{
+	glLightModelfv(pname, params);
+}
+
+void aeLoadIdentity()
 {
 	glLoadIdentity();
 }
 
-void aeMaterialf(unsigned int face, unsigned int pname, float param)
+void aeLoadMatrixf(const GLfloat *m)
+{
+	glLoadMatrixf(m);
+}
+
+void aeMaterialf(unsigned int face, unsigned int pname, GLfloat param)
 {
 	glMaterialf(face, pname, param);
 }
 
-void aeMaterialfv(unsigned int face, unsigned int pname, float *params)
+void aeMaterialfv(unsigned int face, unsigned int pname, const GLfloat *params)
 {
 	glMaterialfv(face, pname, params);
 }
 
-void aeMaterialfv(unsigned int face, unsigned int pname, vector4f *params)
+void aeMatrixMode(unsigned int mode)
 {
-	float p[4];
-
-	p[0] = params->x;
-	p[1] = params->y;
-	p[2] = params->z;
-	p[3] = params->w;
-
-	glMaterialfv(face, pname, p);
+	glMatrixMode(mode);
 }
 
-void aeMaterialfv(unsigned int face, unsigned int pname, vector4f& params)
+void aeMultMatrixf(const GLfloat *m)
 {
-	float p[4];
-
-	p[0] = params.x;
-	p[1] = params.y;
-	p[2] = params.z;
-	p[3] = params.w;
-
-	glMaterialfv(face, pname, p);
+	glMultMatrixf(m);
 }
 
 void aeNewList(unsigned int list, unsigned int mode)
@@ -365,118 +343,123 @@ void aeNormal3f(float nx, float ny, float nz)
 	glNormal3f(nx, ny, nz);
 }
 
-void aePopAttrib()
+void aeNormal3v(const vector3f& n)
 {
-	DI.pop_AttributeStack();
+	aeNormal3f(n.x, n.y, n.z);
+}
 
-	// Pop attributes...
-	glPopAttrib();
-	// ... and decrement counter
-	g_AttributesLeft--;
+void aeOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+{
+	glOrtho(left, right, bottom, top, zNear, zFar);
+}
+
+void aePerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar)
+{
+#ifdef HAVE_GLU
+	gluPerspective(fovy, aspect, zNear, zFar);
+#else
+	// Simple perspective implementation without GLU
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+	GLdouble fH = tan(fovy / 360 * M_PI) * zNear;
+	GLdouble fW = fH * aspect;
+	glFrustum(-fW, fW, -fH, fH, zNear, zFar);
+#endif
+}
+
+void aePointParameterf(unsigned int pname, GLfloat param)
+{
+	// For minimal version, skip point parameters
+	// glPointParameterfARB(pname, param);
+}
+
+void aePointParameterfv(unsigned int pname, const GLfloat *params)
+{
+	// For minimal version, skip point parameters
+	// glPointParameterfvARB(pname, params);
+}
+
+void aePointSize(GLfloat size)
+{
+	glPointSize(size);
+}
+
+void aePolygonMode(unsigned int face, unsigned int mode)
+{
+	glPolygonMode(face, mode);
 }
 
 void aePopMatrix()
 {
-	DI.pop_Matrix_ModelViewStack();
-
-	// Pop matrix...
-	glPopMatrix();
-	// ... and decrement counter
 	g_MaxtrixesLeft--;
-}
-
-void aePushAttrib(GLbitfield mask)
-{
-	DI.push_AttributeStack();
-
-	// Increment counter...
-	g_AttributesLeft++;
-	// ... and push attributes
-	glPushAttrib(mask);
+	glPopMatrix();
 }
 
 void aePushMatrix()
 {
-	DI.push_Matrix_ModelViewStack();
-
-	// Increment counter...
 	g_MaxtrixesLeft++;
-	// ... and push matrix
 	glPushMatrix();
 }
 
-void aeRotate(const vector3f& v)
-{
-	glRotatef(v.x, 1.f, 0.f, 0.f);
-	glRotatef(v.y, 0.f, 1.f, 0.f);
-	glRotatef(v.z, 0.f, 0.f, 1.f);
-}
-
-void aeRotatef (float angle, float x, float y, float z)
+void aeRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
 	glRotatef(angle, x, y, z);
 }
 
-void aeRotatev3 (float angle, const vector3f& v)
+void aeScalef(GLfloat x, GLfloat y, GLfloat z)
 {
-	glRotatef(angle, v.x, v.y, v.z);
+	glScalef(x, y, z);
 }
 
-void aeSetState (unsigned int cap, bool state, bool force)
-{
-	if ( state ) {
-		aeEnable(cap, force);
-	}
-	else {
-		aeDisable(cap, force);
-	}
-}
-
-std::string aeStackInfo()
-{
-	//g_CullFace, g_DriverStates
-
-	std::string result;
-	result += "\n";
-	result += "=== aeStackInfo ===\n";
-	//result += "Active Texture Unit: " + Tools::toString(g_ActiveTexture) + "\n";
-	//result += "Depth Mask Enabled: " + Tools::toString(g_DepthMaskEnabled) + "\n";
-	result += "Immediate Mode Active: " + Tools::toString(g_ImmediateModeLeft) + "\n";
-	result += "Pushed Attributes: " + Tools::toString(g_AttributesLeft) + "\n";
-	result += "Pushed Matrices: " + Tools::toString(g_MaxtrixesLeft) + "\n";
-	result += "===================\n";
-
-	return result;
-}
-
-void aeTexCoord2f(float s, float t)
+void aeTexCoord2f(GLfloat s, GLfloat t)
 {
 	glTexCoord2f(s, t);
 }
 
-void aeTranslate(const vector3f& v)
+void aeTexCoord2v(const vector2f& t)
 {
-	glTranslatef(v.x, v.y, v.z);
+	aeTexCoord2f(t.x, t.y);
 }
 
-void aeTranslatef(float x, float y, float z)
+void aeTexEnvf(unsigned int target, unsigned int pname, GLfloat param)
+{
+	glTexEnvf(target, pname, param);
+}
+
+void aeTexEnvi(unsigned int target, unsigned int pname, int param)
+{
+	glTexEnvi(target, pname, param);
+}
+
+void aeTexImage2D(unsigned int target, int level, int internalformat, AEsizei width, AEsizei height, int border, unsigned int format, unsigned int type, const GLvoid *pixels)
+{
+	glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+}
+
+void aeTexParameterf(unsigned int target, unsigned int pname, GLfloat param)
+{
+	glTexParameterf(target, pname, param);
+}
+
+void aeTexParameteri(unsigned int target, unsigned int pname, int param)
+{
+	glTexParameteri(target, pname, param);
+}
+
+void aeTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
 	glTranslatef(x, y, z);
-}
-
-void aeVertex(const vector2f& v)
-{
-	aeVertex2f(v.x, v.y);
-}
-
-void aeVertex(const vector3f& v)
-{
-	aeVertex3f(v.x, v.y, v.z);
 }
 
 void aeVertex2f(float x, float y)
 {
 	glVertex2f(x, y);
+}
+
+void aeVertex2v(const vector2f& v)
+{
+	aeVertex2f(v.x, v.y);
 }
 
 void aeVertex3f(float x, float y, float z)
@@ -497,4 +480,20 @@ void aeViewport(int x, int y, AEsizei width, AEsizei height)
 void aeViewport(float x, float y, float width, float height)
 {
 	glViewport((int)x, (int)y, (AEsizei)width, (AEsizei)height);
+}
+
+// Debug functions
+unsigned int aeGetAttributesLeft()
+{
+	return g_AttributesLeft;
+}
+
+unsigned int aeGetImmediateModeLeft()
+{
+	return g_ImmediateModeLeft;
+}
+
+unsigned int aeGetMatricesLeft()
+{
+	return g_MaxtrixesLeft;
 }

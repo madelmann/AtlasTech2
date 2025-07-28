@@ -3,6 +3,7 @@
 #include "Arena.h"
 
 // Library includes
+#include <Common/SDLCompat.h>
 
 // Project includes
 #include <Camera/MovieCamera/MovieCamera.h>
@@ -43,8 +44,8 @@
 // Namespace declarations
 
 
-Arena::Arena(HINSTANCE instance)
-: Application("Arena", instance),
+Arena::Arena()
+: Application("Arena"),
   IRendererPlugin(Core::invalidID, "Arena"),
   mBulletManager(0),
   mCollisionManager(0),
@@ -121,25 +122,43 @@ void Arena::dispatchMouseUp(const Common::Event& /*e*/)
 */
 }
 
-LRESULT Arena::handleEvent(const Common::Event& e)
+bool Arena::handleEvent(const SDL_Event& e)
 {
-	switch ( e.uMsg ) {
-		case WM_KEYDOWN:
-			onKeyPress(e.wParam);
+	switch ( e.type ) {
+		case SDL_KEYDOWN:
+			onKeyPress(e.key.keysym.sym);
 			return true;
-		case WM_LBUTTONDBLCLK:
-		case WM_MBUTTONDBLCLK:
-		case WM_RBUTTONDBLCLK:
-			break;
-		case WM_LBUTTONDOWN:
-		case WM_MBUTTONDOWN:
-		case WM_RBUTTONDOWN:
-			dispatchMouseDown(e);
+		case SDL_MOUSEBUTTONDOWN:
+			// Convert SDL mouse button to Common::Event format for existing handlers
+			{
+				Common::Event mouseEvent;
+				if (e.button.button == SDL_BUTTON_LEFT) {
+					mouseEvent.uMsg = WM_LBUTTONDOWN;
+				} else if (e.button.button == SDL_BUTTON_MIDDLE) {
+					mouseEvent.uMsg = WM_MBUTTONDOWN;
+				} else if (e.button.button == SDL_BUTTON_RIGHT) {
+					mouseEvent.uMsg = WM_RBUTTONDOWN;
+				}
+				mouseEvent.wParam = 0;
+				mouseEvent.lParam = MAKELPARAM(e.button.x, e.button.y);
+				dispatchMouseDown(mouseEvent);
+			}
 			return true;
-		case WM_LBUTTONUP:
-		case WM_MBUTTONUP:
-		case WM_RBUTTONUP:
-			dispatchMouseUp(e);
+		case SDL_MOUSEBUTTONUP:
+			// Convert SDL mouse button to Common::Event format for existing handlers
+			{
+				Common::Event mouseEvent;
+				if (e.button.button == SDL_BUTTON_LEFT) {
+					mouseEvent.uMsg = WM_LBUTTONUP;
+				} else if (e.button.button == SDL_BUTTON_MIDDLE) {
+					mouseEvent.uMsg = WM_MBUTTONUP;
+				} else if (e.button.button == SDL_BUTTON_RIGHT) {
+					mouseEvent.uMsg = WM_RBUTTONUP;
+				}
+				mouseEvent.wParam = 0;
+				mouseEvent.lParam = MAKELPARAM(e.button.x, e.button.y);
+				dispatchMouseUp(mouseEvent);
+			}
 			return true;
 	}
 
@@ -303,13 +322,13 @@ void Arena::loadConfig()
 	}
 }
 
-bool Arena::onKeyPress(WPARAM keyCode)
+bool Arena::onKeyPress(SDL_Keycode keyCode)
 {
 	Input::Key *key = mKeyboard->getKey(keyCode);
 	if ( !key ) {
 		// an unbund key has been pressed
 		switch ( keyCode ) {
-			case VK_SPACE:
+			case SDLK_SPACE:
 				shootBox();
 				break;
 		}

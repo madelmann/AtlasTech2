@@ -4,6 +4,9 @@
 
 
 // Library includes
+#ifndef _WIN32
+#include <chrono>
+#endif
 // #include <windows.h>
 
 // Project includes
@@ -41,7 +44,11 @@ protected:
 
 private:
 	double			mCurrentTime;
+#ifdef _WIN32
 	LARGE_INTEGER	mFrequency;
+#else
+	std::chrono::high_resolution_clock::time_point mStartTime;
+#endif
 	bool			mHighPerformanceTimerAvailable;
 };
 

@@ -4,10 +4,18 @@
 
 
 // Library includes
+#ifdef HAVE_OPENAL
 #include <AL/al.h>
 #include <AL/alc.h>
-#include <AL/alut.h>
+// ALUT is optional - comment out if not available
+// #include <AL/alut.h>
 // #include <AL/Framework.h>
+#else
+// OpenAL not available - provide dummy definitions
+typedef int ALuint;
+typedef int ALenum;
+typedef float ALfloat;
+#endif
 
 // Project includes
 #include <Interfaces/Core/Object.h>

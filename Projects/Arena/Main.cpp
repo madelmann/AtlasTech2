@@ -1,53 +1,42 @@
 
-//#pragma warning(disable : 4068)
-
-/*
-// Memory leak check - Begin
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-
-#include <iostream>
-#include <crtdbg.h>
-#ifdef _DEBUG
-#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#define new DEBUG_NEW
-#endif
-// Memory leak check - End
-*/
-
 // Library includes
-#include <windows.h>
-//#include <vld.h>
+#include <iostream>
+#include <cstdlib>
+#include <SDL2/SDL.h>
 
 // Project includes
 #include "Arena.h"
 
 // Namespace declarations
 
+Arena *app = nullptr;
 
-Arena *app = 0;
-
-
-LRESULT CALLBACK WinProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+int main(int argc, char* argv[])
 {
-	if ( app ) {
-		return app->handle( Common::Event(uMsg, wParam, lParam), hWnd );
+	// Initialize SDL
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+		std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
+		return -1;
 	}
 
-	return DefWindowProc(hWnd, uMsg, wParam, lParam); 							// Return the default
-}
+	// Create application instance
+	app = new Arena();
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR lpCmdLine, int /*nCmdShow*/)
-{
-	// Memory leak detection
-	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+	// Build command line string from argc/argv
+	std::string cmdLine;
+	for (int i = 1; i < argc; ++i) {
+		if (i > 1) cmdLine += " ";
+		cmdLine += argv[i];
+	}
 
-	app = new Arena(hInstance);
-
-	app->initialize(lpCmdLine);
+	// Initialize and run application
+	app->initialize(cmdLine.c_str());
 	app->exec();
 
+	// Cleanup
 	delete app;
+	app = nullptr;
 
+	SDL_Quit();
 	return 0;
 }

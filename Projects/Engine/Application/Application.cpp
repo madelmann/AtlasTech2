@@ -1,10 +1,10 @@
-
 // Header
 #include "Application.h"
 
 // Library includes
 #include <iostream>
 #include <fstream>
+#include <SDL2/SDL.h>
 
 // Project includes
 #include <Driver/DriverUtils.h>
@@ -13,32 +13,27 @@
 // Namespace declarations
 
 
-#ifdef _WIN32
-extern LRESULT CALLBACK WinProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-#endif
-
-
 namespace Core {
 
 
-Application::Application(const std::string& name, HINSTANCE instance)
+Application::Application(const std::string& name)
 : Common::Logger(0, ""),
   mConsole(0),
   mEngine(0),
   mEngineSettings(0),
   mGeneralManager(0),
-  mHWND(0),
   mIdGenerator(0),
-  mInstance(instance),
   mKeyboard(0),
   mMediaPathManager(0),
   mMouse(0),
   mName(name),
+  mRunning(false),
   mSceneManager(0),
   mScreenManager(0),
   mScreenWriter(0),
   mShowDebugInterface(true),
-  mSoundManager(0)
+  mSoundManager(0),
+  mWindow(nullptr)
 {
 	//debug("Starting...");
 
@@ -51,7 +46,9 @@ Application::~Application()
 	//debug("Stopping...");
 
 	// prevent double delete
-	mScreenManager->remove(this);
+	if (mScreenManager) {
+		mScreenManager->remove(this);
+	}
 
 	aeDelete( mEngine );
 }
@@ -77,27 +74,28 @@ void Application::autoexec()
 void Application::exec()
 {
 	autoexec();
+	
+	mRunning = true;
+	SDL_Event event;
 
-	static MSG msg;
-
-	while ( keepAlive() ) {
-		if ( PeekMessage(&msg, 0, 0, 0, PM_REMOVE) ) {
-			if ( msg.message == WM_QUIT ) {
+	while ( keepAlive() && mRunning ) {
+		// Handle SDL events
+		while ( SDL_PollEvent(&event) ) {
+			if ( !handleSDLEvent(event) ) {
 				stop();
+				mRunning = false;
 				return;
-			}
-			else {
-				TranslateMessage( &msg );
-				DispatchMessage( &msg );
 			}
 		}
 
 		mEngine->manage();
 
-		mScreenManager->update(mEngine->getFrameTime());
+		if (mScreenManager) {
+			mScreenManager->update(mEngine->getFrameTime());
+		}
 
 		// Display debug interface
-		if ( mShowDebugInterface ) {
+		if ( mShowDebugInterface && mScreenWriter ) {
 			static char text[255] = "";
 
 			sprintf(text, "FPS: %.0f", mEngine->getFrameRate());
@@ -110,15 +108,15 @@ void Application::exec()
 			mScreenWriter->write(0.86f, 0.93f, gameMode, 0, Color::yellow);
 
 			// Mouse
-			// {
-			vector2l m2d = mMouse->getPosition2D();
-			vector3f m3d = mMouse->getPosition3D();
+			if (mMouse) {
+				vector2l m2d = mMouse->getPosition2D();
+				vector3f m3d = mMouse->getPosition3D();
 
-			sprintf(text, "X = %i, Y = %i", m2d.x, m2d.y);
-			mScreenWriter->write(-0.97f, 0.87f, text, 0, Color::blue);
-			sprintf(text, "X = %.2f, Y = %.2f, Z = %.2f", m3d.x, m3d.y, m3d.z);
-			mScreenWriter->write(-0.97f, 0.79f, text, 0, Color::blue);
-			// }
+				sprintf(text, "X = %i, Y = %i", m2d.x, m2d.y);
+				mScreenWriter->write(-0.97f, 0.87f, text, 0, Color::blue);
+				sprintf(text, "X = %.2f, Y = %.2f, Z = %.2f", m3d.x, m3d.y, m3d.z);
+				mScreenWriter->write(-0.97f, 0.79f, text, 0, Color::blue);
+			}
 		}
 
 		// run derived application implementation
@@ -127,97 +125,61 @@ void Application::exec()
 		// run "child"-processes
 		runProcesses();
 
-
 		assert(aeGetAttributesLeft() == 0);
 		assert(aeGetImmediateModeLeft() == 0);
 		assert(aeGetMatricesLeft() == 0);
 	}
 }
 
-LRESULT CALLBACK Application::handle(const Common::Event &e, HWND hwnd)
+bool Application::handleSDLEvent(const SDL_Event& event)
 {
-	if ( hwnd != this->hwnd() ) {
-		return DefWindowProc(hwnd, e.uMsg, e.wParam, e.lParam); 				// Return the default
-	}
-
-	static PAINTSTRUCT ps;
-
-	switch ( e.uMsg ) {
-		case WM_ACTIVATE:
-			if ( mEngine && mEngine->pauseWhileInactive() ) {
-				switch ( e.wParam ) {
-					case WA_ACTIVE:
-					case WA_CLICKACTIVE:
-						mEngine->Play();
-						break;
-					case WA_INACTIVE:
-						mEngine->Pause();
-						break;
+	switch ( event.type ) {
+		case SDL_QUIT:
+			return false;
+			
+		case SDL_WINDOWEVENT:
+			if ( event.window.event == SDL_WINDOWEVENT_RESIZED ) {
+				if ( mEngine ) {
+					mEngine->reshape(
+						0.0f,
+						0.0f,
+						(float)event.window.data1,
+						(float)event.window.data2
+					);
+				}
+			}
+			else if ( event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED ) {
+				if ( mEngine && mEngine->pauseWhileInactive() ) {
+					mEngine->Play();
+				}
+			}
+			else if ( event.window.event == SDL_WINDOWEVENT_FOCUS_LOST ) {
+				if ( mEngine && mEngine->pauseWhileInactive() ) {
+					mEngine->Pause();
 				}
 			}
 			break;
-		case WM_CLOSE:															// If the window is closed
-			PostQuitMessage(0);													// Tell windows we want to quit
+			
+		case SDL_KEYDOWN:
+		case SDL_KEYUP:
+			// Handle key events - these would need to be converted to your engine's key format
+			// For now, just pass through to the engine if it has key handling
 			break;
-		case WM_KEYDOWN:
-			if ( mScreenManager ) {
-				static UIScreen *console = mScreenManager->get("screen.console");
-				if ( console ) {
-					if ( console->isVisible() ) {
-						console->onKeyDown(e.wParam);
-						return true;
-					}
-					else if ( mKeyboard && mKeyboard->getKey("console")->getKeyCode() == e.wParam ) {
-						mScreenManager->show(console);
-						return true;
-					}
-				}
-			}
+			
+		case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
+		case SDL_MOUSEMOTION:
+		case SDL_MOUSEWHEEL:
+			// Handle mouse events - these would need to be converted to your engine's mouse format
 			break;
-		case WM_MOVE:
-		case WM_SIZE:
-			if ( mEngine ) {
-				RECT rcClient;//, rcScreen;
-				GetClientRect(hwnd, &rcClient);									// Get the window rectangle
-				//ClientRectToScreen(mHWND, &rcClient, &rcScreen);
-
-				mEngine->reshape(
-					(float)rcClient.left,
-					(float)rcClient.top,
-					(float)rcClient.right - rcClient.left,
-					(float)rcClient.bottom - rcClient.top
-				);
-			}
-			break;
-		case WM_PAINT:															// If we need to repaint the scene
-			BeginPaint(mHWND, &ps);												// Init the paint struct		
-			EndPaint(mHWND, &ps);												// EndPaint, Clean up
-			break;
-		case WM_SYSCOMMAND:	{													// Intercept System Commands
-			switch ( e.wParam ) {
-				case SC_MONITORPOWER:											// Monitor Trying To Enter Powersave?
-				case SC_SCREENSAVE:												// Screensaver Trying To Start?
-					return false;
-			}
-		} break;
 	}
-
-	if ( mScreenManager && mScreenManager->handleEvent(e) ) {
-		return true;
-	}
-
-	for ( ProcessList::iterator it = mProcesses.begin(); it != mProcesses.end(); ++it ) {
-		if ( (*it)->isRunning() && (*it)->handleEvent(e) ) {
-			return true;
-		}
-	}
-
-	return DefWindowProc(hwnd, e.uMsg, e.wParam, e.lParam); 					// Return the default
+	
+	return true;
 }
 
-HWND Application::hwnd() const
+SDL_Window* Application::window() const
 {
-	return mEngine->hwnd();
+	return mWindow;
 }
 
 void Application::initialize()
@@ -226,15 +188,13 @@ void Application::initialize()
 
 	mEngine->connectProcessHandler(this);
 
-	mHWND = mEngine->createClientWindow(this);
-	if ( mHWND == 0 ) {
-		error("could not create window handle!");
+	mWindow = mEngine->createClientWindow(this);
+	if ( mWindow == nullptr ) {
+		error("could not create window!");
 		return;
 	}
 
-	mEngine->initialize();
-
-	// Setup our objects
+	// Connect to all managers
 	mConsole = mEngine->provideConsole();
 	mGeneralManager = mEngine->provideGeneralManager();
 	mIdGenerator = mEngine->provideIdGenerator();
@@ -246,27 +206,21 @@ void Application::initialize()
 	mScreenWriter = mEngine->provideScreenWriter();
 	mSoundManager = mEngine->provideSoundManager();
 
-	this->setFont(mEngine->provideFont());
-	this->setName("screen.main");
-	this->init();
+	// Show the window
+	if (mWindow) {
+		SDL_ShowWindow(mWindow);
+	}
 
-	mScreenManager->add(this);
-	mScreenManager->show("screen.main");
+	// Finish initialization
+	mEngine->initialize();
 
+	// Add ourself to the screen manager
+	if (mScreenManager) {
+		mScreenManager->add(this);
+	}
 
-	mKeyboard->addKey(VK_ESCAPE,	"escape");
-	mKeyboard->addKey(VK_F5,		"play");
-	mKeyboard->addKey(VK_F6,		"freecamera");
-	mKeyboard->addKey(VK_F9,		"console");
-	mKeyboard->addKey(VK_RETURN,	"return");
-
-
+	// Start our process
 	processStart(this);
-}
-
-HINSTANCE Application::instance() const
-{
-	return mInstance;
 }
 
 const std::string& Application::name() const
@@ -274,9 +228,9 @@ const std::string& Application::name() const
 	return mName;
 }
 
-void Application::update(float /*elapsedTime*/)
+void Application::update(float elapsedTime)
 {
-	//mScreenManager->update(elapsedTime);
+	// Default implementation - can be overridden by derived classes
 }
 
 
