@@ -1,60 +1,103 @@
-INCLUDE(${PROJECT_SOURCE_DIR}/CMake/Base.cmake)
+# Projects/Engine/CMakeLists.txt - AtlasTech2 Engine Library
 
-#ADD_SUBDIRECTORY(Appearence)
-#ADD_SUBDIRECTORY(Application)
-#ADD_SUBDIRECTORY(Camera)
-#ADD_SUBDIRECTORY(Clouds)
-#ADD_SUBDIRECTORY(Common)
-#ADD_SUBDIRECTORY(Console)
-ADD_SUBDIRECTORY(Core)
-#ADD_SUBDIRECTORY(Database)
-#ADD_SUBDIRECTORY(Driver)
-#ADD_SUBDIRECTORY(Environment)
-#ADD_SUBDIRECTORY(Fog)
-#ADD_SUBDIRECTORY(Font)
-#ADD_SUBDIRECTORY(Frustum)
-#ADD_SUBDIRECTORY(Input)
-#ADD_SUBDIRECTORY(Interfaces)
-#ADD_SUBDIRECTORY(JSON)
-#ADD_SUBDIRECTORY(JsonNG)
-#ADD_SUBDIRECTORY(Light)
-#ADD_SUBDIRECTORY(LOD)
-#ADD_SUBDIRECTORY(Material)
-#ADD_SUBDIRECTORY(Math)
-#ADD_SUBDIRECTORY(Media)
-#ADD_SUBDIRECTORY(Menu)
-#ADD_SUBDIRECTORY(Mesh)
-#ADD_SUBDIRECTORY(Misc)
-#ADD_SUBDIRECTORY(Parsers)
-#ADD_SUBDIRECTORY(Physic)
-#ADD_SUBDIRECTORY(Renderer)
-#ADD_SUBDIRECTORY(Scene)
-#ADD_SUBDIRECTORY(ScriptNG)
-#ADD_SUBDIRECTORY(Shader)
-#ADD_SUBDIRECTORY(Sky)
-#ADD_SUBDIRECTORY(Sound)
-#ADD_SUBDIRECTORY(Template)
-#ADD_SUBDIRECTORY(Terrain)
-#ADD_SUBDIRECTORY(Texture)
-#ADD_SUBDIRECTORY(Tools)
-#ADD_SUBDIRECTORY(UI)
-#ADD_SUBDIRECTORY(UIKit)
-#ADD_SUBDIRECTORY(Water)
-#ADD_SUBDIRECTORY(Wind)
+# Include base configuration
+include(${PROJECT_SOURCE_DIR}/CMake/Base.cmake)
 
-SET(SOURCES
-	Engine.cpp
+message(STATUS "Configuring AtlasTech2 Engine...")
+
+# Automatically find all source files
+file(GLOB_RECURSE SOURCES
+    "*.cpp"
 )
 
-SET(HEADERS
-	Engine.h
+# Automatically find all header files
+file(GLOB_RECURSE HEADERS
+    "*.h"
 )
 
-SET(DEPENDENCIES
+# Filter out any files that might not exist or cause issues
+list(FILTER SOURCES EXCLUDE REGEX ".*unused.*")
+list(FILTER HEADERS EXCLUDE REGEX ".*unused.*")
+
+# Remove any empty entries
+list(REMOVE_ITEM SOURCES "")
+list(REMOVE_ITEM HEADERS "")
+
+# Print number of files found for debugging
+list(LENGTH SOURCES SOURCE_COUNT)
+list(LENGTH HEADERS HEADER_COUNT)
+message(STATUS "Found ${SOURCE_COUNT} source files and ${HEADER_COUNT} header files")
+
+# Define dependencies (will be populated based on what's needed)
+set(DEPENDENCIES)
+
+# Create the static library
+add_library(AtlasEngine STATIC ${SOURCES} ${HEADERS})
+
+# Set library properties
+set_target_properties(AtlasEngine PROPERTIES
+    OUTPUT_NAME "AtlasEngine"
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
 )
 
-add_include(Projects/Engine)
-add_include(Projects/ObjectiveScript)
+# Configure include directories for the target
+target_include_directories(AtlasEngine PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Interfaces>
+    $<INSTALL_INTERFACE:include>
+)
 
-build_static_lib(Engine "")
+# Platform-specific configurations
+if(WIN32)
+    # Windows-specific libraries and settings
+    target_link_libraries(AtlasEngine PRIVATE
+        opengl32
+        glu32
+        gdi32
+        user32
+        kernel32
+        winmm
+    )
 
+    # Add Windows-specific compile definitions
+    target_compile_definitions(AtlasEngine PRIVATE
+        WIN32
+        _WINDOWS
+        WIN32_LEAN_AND_MEAN
+        NOMINMAX
+    )
+else()
+    # Unix-like systems
+    find_package(OpenGL REQUIRED)
+    if(OpenGL_FOUND)
+        target_link_libraries(AtlasEngine PRIVATE ${OPENGL_LIBRARIES})
+        target_include_directories(AtlasEngine PRIVATE ${OPENGL_INCLUDE_DIRS})
+    endif()
+
+    # Additional Unix libraries
+    target_link_libraries(AtlasEngine PRIVATE
+        pthread
+        dl
+        m
+    )
+endif()
+
+# Optional dependencies (only link if available)
+# These will be handled by the module system in Builder.cmake
+
+# Debug/Release specific settings
+target_compile_definitions(AtlasEngine PRIVATE
+    $<$<CONFIG:Debug>:DEBUG>
+    $<$<CONFIG:Debug>:_DEBUG>
+    $<$<CONFIG:Release>:NDEBUG>
+)
+
+# Export the target for use by other projects
+set_property(TARGET AtlasEngine PROPERTY EXPORT_NAME Engine)
+
+message(STATUS "AtlasTech2 Engine configured successfully")
+message(STATUS "  Sources: ${SOURCE_COUNT} files")
+message(STATUS "  Headers: ${HEADER_COUNT} files")
+message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
